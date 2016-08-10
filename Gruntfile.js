@@ -125,7 +125,7 @@ module.exports = function(grunt) {
             },
             theme: {
                 files: [ 'css/theme/source/*.scss', 'css/theme/template/*.scss' ],
-                tasks: 'css-themes'
+                tasks: ['css-themes', 'jekyll']
             },
             css: {
                 files: [ 'css/reveal.scss' ],
@@ -161,7 +161,7 @@ module.exports = function(grunt) {
     grunt.registerTask( 'jekyll', [ 'shell:jekyllBuild' ] );
 
     // JS task
-    grunt.registerTask( 'js', [ 'jshint', 'uglify' ] );
+    grunt.registerTask( 'js', [ 'jshint', 'uglify', 'jekyll' ] );
 
     // Theme CSS
     grunt.registerTask( 'css-themes', [ 'sass:themes' ] );
