@@ -37,20 +37,13 @@
     </head>
     <body>
         <div class="reveal">
-
             <div class="slides">
 
-                <section>
-                    <h1 class="h1 mod-code">Lengow.get('js').upgrade();</h1>
-                    <h4>ES6, React, Redux, Webpack and others ✨ </h4>
-                </section>
+                {% for slide in site.slides %}
 
-                <section>
-                    <code>
-                        //TODO
-                    </code>
-                </section>
+                    {{slide.content}}
 
+                {% endfor %}
 
             </div>
         </div>

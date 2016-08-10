@@ -11,3 +11,9 @@ github_username:  guillaumewuip
 # Build settings
 markdown: kramdown
 theme: minima
+
+collections:
+- slides
+
+exclude:
+- node_modules

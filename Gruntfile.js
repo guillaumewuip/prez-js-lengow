@@ -132,11 +132,11 @@ module.exports = function(grunt) {
                 tasks: 'css-core'
             },
             html: {
-                files: [ '*.html'],
+                files: [ '*.html', '_slides/*.html'],
                 tasks: ['jekyll'],
             },
             markdown: {
-                files: [ '*.md' ],
+                files: [ '*.md', '_slides/*.md' ],
                 tasks: ['jekyll'],
             },
             options: {
