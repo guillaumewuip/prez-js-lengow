@@ -1,0 +1,13 @@
+title: Prez js Lengow
+email: guillaume@wuips.com
+description: ""
+
+baseurl: ""
+url: "http://guillaumewuip.github.io/prez-js-lengow"
+
+twitter_username: guillaumewuip
+github_username:  guillaumewuip
+
+# Build settings
+markdown: kramdown
+theme: minima
