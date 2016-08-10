@@ -1,7 +1,8 @@
 /* global module:false */
 module.exports = function(grunt) {
     var port = grunt.option('port') || 8000;
-    var base = grunt.option('base') || '.';
+
+    var base = '_site';
 
     // Project configuration
     grunt.initConfig({
@@ -108,6 +109,15 @@ module.exports = function(grunt) {
             ]
         },
 
+        shell: {
+            jekyllBuild: {
+                command: 'bundle exec jekyll build --incremental',
+            },
+            //jekyllServe: {
+                //command: 'bundle exec jekyll serve'
+            //}
+        },
+
         watch: {
             js: {
                 files: [ 'Gruntfile.js', 'js/reveal.js' ],
@@ -122,10 +132,12 @@ module.exports = function(grunt) {
                 tasks: 'css-core'
             },
             html: {
-                files: [ '*.html']
+                files: [ '*.html'],
+                tasks: ['jekyll'],
             },
             markdown: {
-                files: [ '*.md' ]
+                files: [ '*.md' ],
+                tasks: ['jekyll'],
             },
             options: {
                 livereload: true
@@ -143,9 +155,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks( 'grunt-contrib-connect' );
     grunt.loadNpmTasks( 'grunt-autoprefixer' );
     grunt.loadNpmTasks( 'grunt-zip' );
+    grunt.loadNpmTasks( 'grunt-shell' );
 
     // Default task
-    grunt.registerTask( 'default', [ 'css', 'js' ] );
+    grunt.registerTask( 'jekyll', [ 'shell:jekyllBuild' ] );
 
     // JS task
     grunt.registerTask( 'js', [ 'jshint', 'uglify' ] );
@@ -163,6 +176,9 @@ module.exports = function(grunt) {
     grunt.registerTask( 'package', [ 'default', 'zip' ] );
 
     // Serve presentation locally
-    grunt.registerTask( 'serve', [ 'connect', 'watch' ] );
+    grunt.registerTask( 'serve', [ 'connect', 'jekyll', 'watch' ] );
+
+    // Default task
+    grunt.registerTask( 'default', [ 'css', 'js', 'jekyll' ] );
 
 };
