@@ -4,12 +4,16 @@
 (function () {
 
     Reveal.initialize({
-        controls: true,
-        progress: true,
-        history: true,
-        center: true,
+        controls:    false,
+        progress:    true,
+        history:     true,
+        center:      true,
+        slideNumber: true,
 
         transition: 'none',
+
+        width: 960,     // 16/10
+        height: 600,
 
         dependencies: [
             {
