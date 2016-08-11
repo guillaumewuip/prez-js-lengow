@@ -1,0 +1,151 @@
+//---------------------------
+//   Custom flexbox grid
+//---------------------------
+
+$columns: 12;
+
+//@see https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+//prefixr
+//
+//@param {string} prop
+//@param {string|number|color} value
+@mixin prefixr($prop, $value) {
+    -webkit-#{$prop}: $value;
+    -moz-#{$prop}: $value;
+    -o-#{$prop}: $value;
+    -ms-#{$prop}: $value;
+    #{$prop}: $value;
+}
+
+//element
+//
+//Defines css rules for an element :
+//- flex-grow
+//- flex-basis
+//
+//Defines max-width class.
+//
+//@param {number} flex     Flex-grow value
+@mixin element ($flex) {
+
+    @include prefixr(flex-grow, $flex);
+    @include prefixr(flex-basis, percentage($flex / $columns));
+
+    &.max {
+        max-width: percentage($flex / $columns);
+    }
+}
+
+.container,
+.container-full {
+    width: 100%;
+}
+
+.container-height-full {
+    height: 100%;
+}
+
+
+.row {
+    @include prefixr(flex-direction, row);
+    @include prefixr(flex-wrap, wrap);
+    @include prefixr(justify-content, flex-start);
+    @include prefixr(align-items, flex-start);
+    display: flex;
+
+    > * {
+        @include element(1); //default for all .row children
+    }
+}
+
+.row-end {
+    @include prefixr(justify-content, flex-end);
+}
+
+.row-center {
+    @include prefixr(justify-content, flex-center);
+}
+
+.row-space {
+    @include prefixr(justify-content, flex-between);
+}
+
+.row-align-end {
+    @include prefixr(align-items, flex-end);
+}
+
+.row-align-center {
+    @include prefixr(align-items, center);
+}
+
+.row-align-stretch {
+    @include prefixr(align-items, stretch);
+}
+
+.row-align-baseline {
+    @include prefixr(align-items, baseline);
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+
+// Mobile Rows
+$i: 0;
+@while $i < 60 {
+    $i: $i + 5;
+
+    .row-top-#{$i} {
+        padding-top: $i * 1px;
+    }
+}
+
+$i: 0;
+@while $i < 60 {
+    $i: $i + 5;
+
+    .row-bottom-#{$i} {
+        padding-bottom: $i * 1px;
+    }
+}
+
+
+@for $i from 1 through $columns {
+    .col-#{$i} {
+        @include element($i);
+    }
+}
+
+//Push Offsets
+@for $i from 1 through $columns - 1 {
+    .push-#{$i} {
+        margin-left: percentage($i / $columns);
+    }
+}
+
+.block {
+    display: block;
+}
+
+.inline {
+    display: inline;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.hidden {
+    display: none;
+}
+

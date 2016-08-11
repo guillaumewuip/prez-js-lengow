@@ -44,9 +44,8 @@ section.has-dark-background {
 }
 
 
-// Theme template ------------------------------
-@import "../template/theme";
-// ---------------------------------------------
+@import '../template/theme';
+@import 'utils/grid';
 
 .h1.mod-code {
     font-family: 'Cousine', 'Courier', 'sans-serif';
@@ -57,7 +56,15 @@ section.has-dark-background {
     text-align: left;
 }
 
-.reveal .code {
+.reveal pre {
+    position: initial;
+    width: auto;
+    margin: 0;
+    box-shadow: none;
+}
+
+.reveal pre code {
+    padding: 0.4em;
     font-family: 'Cousine', 'Courier', 'sans-serif';
 }
 
@@ -65,4 +72,7 @@ section.has-dark-background {
     background-color: transparent;
     color: lighten( $mainColor, 30% );
     font-size: .8em;
+}
+.reveal.has-dark-background .slide-number {
+    color: darken(white, 30%);
 }

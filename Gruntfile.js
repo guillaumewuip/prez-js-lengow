@@ -39,7 +39,7 @@ module.exports = function(grunt) {
                     {
                         expand: true,
                         cwd: 'css/theme/source',
-                        src: ['*.scss'],
+                        src: '*.scss',
                         dest: 'css/theme',
                         ext: '.css'
                     }
@@ -92,7 +92,7 @@ module.exports = function(grunt) {
                     port: port,
                     base: base,
                     livereload: true,
-                    open: true
+                    //open: true
                 }
             }
         },
@@ -120,11 +120,14 @@ module.exports = function(grunt) {
 
         watch: {
             js: {
-                files: [ 'Gruntfile.js', 'js/reveal.js' ],
+                files: [ 'Gruntfile.js', 'js/*.js' ],
                 tasks: 'js'
             },
             theme: {
-                files: [ 'css/theme/source/*.scss', 'css/theme/template/*.scss' ],
+                files: [
+                    'css/theme/source/*.scss',
+                    'css/theme/source/**/*.scss',
+                ],
                 tasks: ['css-themes', 'jekyll']
             },
             css: {
@@ -176,7 +179,7 @@ module.exports = function(grunt) {
     grunt.registerTask( 'package', [ 'default', 'zip' ] );
 
     // Serve presentation locally
-    grunt.registerTask( 'serve', [ 'connect', 'jekyll', 'watch' ] );
+    grunt.registerTask( 'serve', ['connect', 'css-themes', 'jekyll', 'watch']);
 
     // Default task
     grunt.registerTask( 'default', [ 'css', 'js', 'jekyll' ] );
