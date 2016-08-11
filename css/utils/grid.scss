@@ -54,31 +54,31 @@ $columns: 12;
     }
 }
 
-.row-end {
+.row.row-end {
     @include prefixr(justify-content, flex-end);
 }
 
-.row-center {
+.row.row-center {
     @include prefixr(justify-content, flex-center);
 }
 
-.row-space {
+.row.row-space {
     @include prefixr(justify-content, flex-between);
 }
 
-.row-align-end {
+.row.row-align-end {
     @include prefixr(align-items, flex-end);
 }
 
-.row-align-center {
+.row.row-align-center {
     @include prefixr(align-items, center);
 }
 
-.row-align-stretch {
+.row.row-align-stretch {
     @include prefixr(align-items, stretch);
 }
 
-.row-align-baseline {
+.row.row-align-baseline {
     @include prefixr(align-items, baseline);
 }
 
@@ -100,7 +100,7 @@ $i: 0;
 @while $i < 60 {
     $i: $i + 5;
 
-    .row-top-#{$i} {
+    .row.row-top-#{$i} {
         padding-top: $i * 1px;
     }
 }
@@ -109,7 +109,7 @@ $i: 0;
 @while $i < 60 {
     $i: $i + 5;
 
-    .row-bottom-#{$i} {
+    .row.row-bottom-#{$i} {
         padding-bottom: $i * 1px;
     }
 }

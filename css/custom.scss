@@ -17,7 +17,7 @@ $backgroundColor: #fff;
 $mainColor: #222;
 $headingColor: #222;
 
-$mainFontSize: 38px;
+$mainFontSize: 32px;
 $mainFont: 'Open Sans', Helvetica, sans-serif;
 $headingFont: 'Open Sans', Helvetica, sans-serif;
 $headingTextShadow: none;
@@ -28,25 +28,43 @@ $linkColor: #2a76dd;
 $linkColorHover: lighten( $linkColor, 15% );
 $selectionBackgroundColor: lighten( $linkColor, 25% );
 
-$heading1Size: 2.5em;
-$heading2Size: 1.6em;
-$heading3Size: 1.3em;
-$heading4Size: 1.0em;
+$heading1Size: 1.6em;
+$heading2Size: 1.2em;
 
+section.dark-background,
 section.has-dark-background {
 	&, h1, h2, h3, h4, h5, h6 {
 		color: #fff;
 	}
 }
 
-
 @import 'template/theme';
 @import 'utils/grid';
 @import 'slides';
 
+* {
+    box-sizing: border-box;
+}
+
 .h1.mod-code {
     font-family: 'Cousine', 'Courier', 'sans-serif';
     font-size: $heading3Size;
+}
+
+.reveal ul {
+    padding: 0 1em;
+}
+
+    .reveal li {
+        line-height: 2em;
+    }
+
+.reveal .small {
+    font-size: 0.6em;
+}
+
+.reveal .really-small {
+    font-size: 0.4em;
 }
 
 .reveal pre {
@@ -79,8 +97,6 @@ section.has-dark-background {
         max-width: initial;
     }
 
-
-
 .reveal .slide-number {
     background-color: transparent;
     color: lighten( $mainColor, 30% );
@@ -88,4 +104,11 @@ section.has-dark-background {
 }
 .reveal.has-dark-background .slide-number {
     color: darken(white, 30%);
+}
+
+.reveal .slides section .fragment.current-visible {
+    display: none;
+}
+.reveal .slides section .fragment.current-visible.current-fragment {
+    display: block;
 }
