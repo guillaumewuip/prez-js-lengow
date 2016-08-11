@@ -17,6 +17,8 @@
 
         margin: 0,
 
+        backgroundTransition: 'none',
+
         dependencies: [
             {
                 src: 'lib/js/classList.js',
