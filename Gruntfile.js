@@ -28,39 +28,6 @@ module.exports = function(grunt) {
             }
         },
 
-        sass: {
-            core: {
-                files: {
-                    'css/reveal.css': 'css/reveal.scss',
-                }
-            },
-            themes: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: 'css/theme/source',
-                        src: '*.scss',
-                        dest: 'css/theme',
-                        ext: '.css'
-                    }
-                ]
-            }
-        },
-
-        autoprefixer: {
-            dist: {
-                src: 'css/reveal.css'
-            }
-        },
-
-        cssmin: {
-            compress: {
-                files: {
-                    'css/reveal.min.css': [ 'css/reveal.css' ]
-                }
-            }
-        },
-
         jshint: {
             options: {
                 curly: false,
@@ -125,14 +92,11 @@ module.exports = function(grunt) {
             },
             theme: {
                 files: [
+                    'css/reveal.scss' ,
                     'css/theme/source/*.scss',
                     'css/theme/source/**/*.scss',
                 ],
-                tasks: ['css-themes', 'jekyll']
-            },
-            css: {
-                files: [ 'css/reveal.scss' ],
-                tasks: 'css-core'
+                tasks: ['jekyll']
             },
             html: {
                 files: [ '*.html', '_slides/*.html'],
@@ -151,10 +115,8 @@ module.exports = function(grunt) {
 
     // Dependencies
     grunt.loadNpmTasks( 'grunt-contrib-jshint' );
-    grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
     grunt.loadNpmTasks( 'grunt-contrib-uglify' );
     grunt.loadNpmTasks( 'grunt-contrib-watch' );
-    grunt.loadNpmTasks( 'grunt-sass' );
     grunt.loadNpmTasks( 'grunt-contrib-connect' );
     grunt.loadNpmTasks( 'grunt-autoprefixer' );
     grunt.loadNpmTasks( 'grunt-zip' );
@@ -166,22 +128,13 @@ module.exports = function(grunt) {
     // JS task
     grunt.registerTask( 'js', [ 'jshint', 'uglify', 'jekyll' ] );
 
-    // Theme CSS
-    grunt.registerTask( 'css-themes', [ 'sass:themes' ] );
-
-    // Core framework CSS
-    grunt.registerTask( 'css-core', [ 'sass:core', 'autoprefixer', 'cssmin' ] );
-
-    // All CSS
-    grunt.registerTask( 'css', [ 'sass', 'autoprefixer', 'cssmin' ] );
-
     // Package presentation to archive
     grunt.registerTask( 'package', [ 'default', 'zip' ] );
 
     // Serve presentation locally
-    grunt.registerTask( 'serve', ['connect', 'css-themes', 'jekyll', 'watch']);
+    grunt.registerTask( 'serve', ['connect', 'jekyll', 'watch']);
 
     // Default task
-    grunt.registerTask( 'default', [ 'css', 'js', 'jekyll' ] );
+    grunt.registerTask( 'default', ['js', 'jekyll' ] );
 
 };

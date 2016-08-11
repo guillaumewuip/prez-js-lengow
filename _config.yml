@@ -17,3 +17,5 @@ collections:
 
 exclude:
 - node_modules
+
+sass:
