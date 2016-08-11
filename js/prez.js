@@ -12,8 +12,10 @@
 
         transition: 'none',
 
-        width: 960,     // 16/10
-        height: 600,
+        width: '100%',     // 16/10
+        height: '100%',
+
+        margin: 0,
 
         dependencies: [
             {

@@ -42,11 +42,6 @@ $columns: 12;
     width: 100%;
 }
 
-.container-height-full {
-    height: 100%;
-}
-
-
 .row {
     @include prefixr(flex-direction, row);
     @include prefixr(flex-wrap, wrap);

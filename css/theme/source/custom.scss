@@ -46,27 +46,44 @@ section.has-dark-background {
 
 @import '../template/theme';
 @import 'utils/grid';
+@import 'utils/slides';
 
 .h1.mod-code {
     font-family: 'Cousine', 'Courier', 'sans-serif';
     font-size: $heading3Size;
 }
 
-.reveal .slides {
-    text-align: left;
-}
-
 .reveal pre {
+    background: #3f3f3f;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
     position: initial;
     width: auto;
-    margin: 0;
-    box-shadow: none;
 }
 
+    .reveal pre.full {
+        max-height: initial;
+        max-width: initial;
+        height: 100%;
+        width: 100%;
+    }
+
 .reveal pre code {
-    padding: 0.4em;
+    padding: 1em;
     font-family: 'Cousine', 'Courier', 'sans-serif';
+    background: transparent;
 }
+
+    .reveal pre code.full {
+        padding-top: 0;
+        padding-bottom: 0;
+        max-height: initial;
+        max-width: initial;
+    }
+
+
 
 .reveal .slide-number {
     background-color: transparent;

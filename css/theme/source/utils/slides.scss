@@ -1,0 +1,39 @@
+
+.reveal .backgrounds,
+.reveal .slides {
+    align-items: stretch;
+    display: flex;
+    text-align: left;
+}
+
+    .reveal .slides .slide {
+        align-items: center;
+        display: flex !important;
+        flex: 1 100%;
+        min-width: 100%;
+        position: static;
+    }
+
+    .reveal .slides .slide.mod-full {
+        align-items: stretch;
+        padding: 0;
+    }
+
+    .reveal:not(.overview) .slides .slide.past,
+    .reveal:not(.overview) .slides .slide.future {
+        display: none !important;
+    }
+    .reveal.overview .slides .slide {
+        left: -100%;
+        position: relative;
+    }
+
+        .reveal .slides .slide .content {
+            padding: 8vw 6vh;
+        }
+
+
+    .reveal.overview .backgrounds .past,
+    .reveal.overview .backgrounds .future {
+        /*display: none !important;*/
+    }
