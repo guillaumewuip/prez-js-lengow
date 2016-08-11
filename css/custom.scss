@@ -1,5 +1,5 @@
-'''
-'''
+---
+---
 
 // Default mixins and settings -----------------
 @import "template/mixins";
@@ -42,7 +42,7 @@ section.has-dark-background {
 
 @import 'template/theme';
 @import 'utils/grid';
-@import 'utils/slides';
+@import 'slides';
 
 .h1.mod-code {
     font-family: 'Cousine', 'Courier', 'sans-serif';

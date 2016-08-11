@@ -92,9 +92,7 @@ module.exports = function(grunt) {
             },
             theme: {
                 files: [
-                    'css/reveal.scss' ,
-                    'css/theme/source/*.scss',
-                    'css/theme/source/**/*.scss',
+                    'css/**/*.scss',
                 ],
                 tasks: ['jekyll']
             },
