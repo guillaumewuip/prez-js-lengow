@@ -9,6 +9,7 @@
     .slide {
         align-items: center;
         flex: 1 100%;
+        flex-wrap: wrap;
         min-width: 100%;
         height: 100%;
     }
@@ -28,7 +29,6 @@
         display: none !important;
     }
     .reveal.overview .slides .slide {
-        left: -100%;
         position: relative;
     }
         .content {

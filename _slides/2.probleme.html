@@ -4,14 +4,14 @@
 
 <section class="slide">
 
-    <section class="slide text-center">
+    <section class="slide text-center" data-background-color="hsl(0, 67%, 58%)">
         <div class="content">
             <h1>🤔 Pourquoi ?</h1>
-            <h2><i>Dis moi c'est où t'as mal ?</i></h2>
+            <p><i>Dis moi c'est où t'as mal ?</i></p>
         </div>
     </section>
 
-    <section class="slide row-align-start">
+    <section class="slide">
         <div class="col-6">
             <div class="content">
                 <h2>C'est grave docteur ?</h2>
@@ -23,13 +23,16 @@
                         Maintenabilité
                     </li>
                     <li class="fragment " data-fragment-index="4">
+                        Qualité
+                    </li>
+                    <li class="fragment " data-fragment-index="5">
                         Performances
                     </li>
                 </ul>
             </div>
         </div>
         <div class="col-6">
-            <div class="content">
+            <div class="content text-center">
 
                 <span class="fragment current-visible" data-fragment-index="1">
                     You know, <i>Services, Contrôleurs, Vues, etc. </i>
@@ -38,12 +41,104 @@
 
                 <span class="fragment current-visible" data-fragment-index="2">
                     <img src="media/big_pile_of_shit.gif" />
+                    <p>The jQuery Effect™</p>
                 </span>
 
                 <span class="fragment current-visible" data-fragment-index="3">
-                    <code>//TODO image nb lignes</code>
+                    <img src="media/nb_lignes.png" />
+                    <p class="small">Grooos fichiers</p>
                 </span>
 
+                <span class="fragment current-visible" data-fragment-index="4">
+                    <img src="media/60_tests.jpg" />
+                </span>
+
+                <span class="fragment current-visible" data-fragment-index="5">
+                    <pre><code class="js">
+//bad
+if ($('.toto').hasClass('is-active')) {
+    $('.titi').hide();
+} else {
+    $('titi').show();
+}
+                    </code></pre>
+                    <div class="row really-small u-margin-top">
+                        <ul class="col-xs-6">
+                            <li class="mod-no-style"><b>JS</b></li>
+                            <li>Salut DOM !</li>
+                            <li>Donne moi <code>.toto</code>
+                                <br> <br> <br>
+                            </li>
+                            <li>Donne moi <code>.toto.is-active</code>
+                                <br> <br> <br>
+                            </li>
+                            <li>Donne moi <code>.titi</code>
+                                <br> <br> <br>
+                            </li>
+                            <li class="mod-no-style">...</li>
+                        </ul>
+                        <ul class="col-xs-6">
+                            <li class="mod-no-style"><b>Browser</b></li>
+                            <li>Salut gros !</li>
+                            <li>Attends 100ms stp <br> ... <br> Voilà</li>
+                            <li>Attends 100ms stp <br> ... <br> Voilà</li>
+                            <li>Attends 100ms stp <br> ... <br> Voilà</li>
+                            <li class="mod-no-style">...</li>
+                        </ul>
+                    </div>
+                </span>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="content">
+            <h2>Solutions</h2>
+
+            <div class="row">
+                <ul>
+                    <li>
+                        Meilleur JS
+                        <p class="small">
+                            <span data-fragment-index="1"
+                                class="fragment highlight-blue">ES6</span>,
+                            <span data-fragment-index="1"
+                                class="fragment highlight-blue">Webpack</span>
+                        </p>
+                    </li>
+                    <li>
+                        Frameworks
+                        <p class="small">
+                            Angular, Ember,
+                            <span data-fragment-index="1"
+                                class="fragment highlight-blue">Redux</span>*,
+                            etc.
+                        </p>
+                    </li>
+                    <p class="really-small u-margin-top">
+                        * C'est pas un framework mais c'est pas grave
+                    </p>
+                </ul>
+                <ul>
+                    <li>
+                        Templating
+                        <p class="small">
+                            <span data-fragment-index="1"
+                                class="fragment highlight-blue">React</span>,
+                            Vue.js, etc.
+                        </p>
+                    </li>
+                    <li>
+                        Tests
+                        <p class="small">
+                            <span data-fragment-index="1"
+                                class="fragment highlight-blue">Mocha</span>,
+                            <span data-fragment-index="1"
+                                class="fragment highlight-blue">chai</span>
+                        </p>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>

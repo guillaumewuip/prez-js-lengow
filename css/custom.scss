@@ -12,9 +12,10 @@
 
 
 // Override theme settings (see template/settings.scss)
-$backgroundColor: #fff;
+$backgroundColor: darken(#fff, 2%);
+$customColor: hsl(222, 67%, 50%);
 
-$mainColor: #222;
+$mainColor: #444;
 $headingColor: #222;
 
 $mainFontSize: 32px;
@@ -38,6 +39,28 @@ section.has-dark-background {
 	}
 }
 
+.h1 {
+    @extend h1;
+}
+.h2 {
+    @extend h2;
+}
+.b {
+    @extend b;
+}
+
+.accent-color {
+    color: $customColor;
+}
+
+.fade-white {
+    color: hsla(0, 100%, 100%, 0.7);
+}
+.fade-dark {
+    color: hsla(0, 0%, 0%, 0.5);
+}
+
+
 @import 'template/theme';
 @import 'utils/grid';
 @import 'slides';
@@ -51,6 +74,14 @@ section.has-dark-background {
     font-size: $heading3Size;
 }
 
+.reveal .u-margin-top {
+    margin-top: 2em;
+}
+
+.reveal .u-margin-bottom {
+    margin-bottom: 2em;
+}
+
 .reveal ul {
     padding: 0 1em;
 }
@@ -59,8 +90,16 @@ section.has-dark-background {
         line-height: 2em;
     }
 
+    .reveal ul.mod-no-style,
+    .reveal li.mod-no-style {
+        list-style: none;
+    }
+
 .reveal .small {
     font-size: 0.6em;
+}
+.reveal p.small {
+    margin: 0.2em 0;
 }
 
 .reveal .really-small {
@@ -75,6 +114,7 @@ section.has-dark-background {
     margin: 0;
     position: initial;
     width: auto;
+    line-height: 1.6em;
 }
 
     .reveal pre.full {
@@ -84,9 +124,12 @@ section.has-dark-background {
         width: 100%;
     }
 
+.reveal code,
 .reveal pre code {
-    padding: 1em;
     font-family: 'Cousine', 'Courier', 'sans-serif';
+}
+.reveal pre code {
+    padding: 0 1em;
     background: transparent;
 }
 

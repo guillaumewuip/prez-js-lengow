@@ -23,7 +23,8 @@
 
 	'use strict';
 
-    var overviewSlideWidthMargin;
+    var overviewSlideWidthMargin,
+        overviewSlideHeightMargin;
 
 	var Reveal;
 
@@ -1812,7 +1813,8 @@
 			// Calculate slide sizes
 			var margin = 70;
 			var slideSize = getComputedSlideSize();
-            overviewSlideWidthMargin =  margin;
+            overviewSlideWidthMargin = margin;
+            overviewSlideHeightMargin = margin;
             overviewSlideWidth = slideSize.width + margin;
 			overviewSlideHeight = slideSize.height + margin;
 
@@ -1855,7 +1857,7 @@
 					vslide.setAttribute( 'data-index-h', h );
 					vslide.setAttribute( 'data-index-v', v );
 
-					transformElement( vslide, 'translate3d(0, ' + ( v * overviewSlideHeight ) + 'px, 0)' );
+					transformElement( vslide, 'translate3d(0, ' + ( v * overviewSlideHeightMargin ) + 'px, 0)' );
 				} );
 
 			}
@@ -1866,7 +1868,7 @@
 			transformElement( hbackground, 'translate3d(' + ( h * overviewSlideWidthMargin ) + 'px, 0, 0)' );
 
 			toArray( hbackground.querySelectorAll( '.slide-background' ) ).forEach( function( vbackground, v ) {
-				transformElement( vbackground, 'translate3d(0, ' + ( v * overviewSlideHeight ) + 'px, 0)' );
+				transformElement( vbackground, 'translate3d(0, ' + ( v * overviewSlideHeightMargin ) + 'px, 0)' );
 			} );
 		} );
 
