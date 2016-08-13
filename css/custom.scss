@@ -146,8 +146,11 @@ section.has-dark-background {
     font-size: .8em;
 }
 .reveal.has-dark-background .slide-number {
-    color: darken(white, 30%);
+    color: hsla(0, 100%, 100%, 0.7);
 }
+    .reveal .slide-number-b {
+        font-size: 0.7em;
+    }
 
 .reveal .slides section .fragment.current-visible {
     display: none;
