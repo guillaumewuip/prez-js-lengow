@@ -14,24 +14,213 @@
         </div>
     </section>
 
+    <section class="slide">
+        <div class="col-6">
+            <div class="content">
+                <h1>ES6</h1>
+                <p>Quelques petits trucs sympas pour écrire du meilleur code.</p>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="content fragment small">
+                <blockquote class="u-italic">
+                    Cet homme est fou 😱<br>
+                    Les navigateurs ne vont pas supporter ça avant 2038 !
+                </blockquote>
+                <blockquote class="u-italic">
+                    Pas d'inquiétude !<br>
+                    Webpack va nous permettre de faire du transpilling <br>
+                    ES6 → ES5 👌
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
     <section class="slide mod-full">
 
         <div class="col-6 row row-align-center">
             <div class="content">
-                <p>Test</p>
+                <h1>ES6</h1>
+                <ul>
+                    <li class="fragment" data-fragment-index="1">
+                        Arrow function
+                    </li>
+                    <li class="fragment" data-fragment-index="3">
+                        <code>const</code>, <code>let</code>
+                    </li>
+                    <li class="fragment" data-fragment-index="5">
+                        Default params
+                    </li>
+                    <li class="fragment" data-fragment-index="6">
+                        Template de chaîne
+                    </li>
+                    <li class="fragment" data-fragment-index="7">
+                        Promise
+                    </li>
+                    <li class="fragment" data-fragment-index="9">
+                        <code>fetch()</code>
+                    </li>
+                    <li class="fragment" data-fragment-index="10">
+                        <code>import</code>
+                    </li>
+                </ul>
             </div>
         </div>
 
-        <div class="col-6">
+        <div class="col-6 max">
             <pre class="full">
-                <code class="full" data-trim data-noescape class="js">
-//TODO
+                <code class="full fragment current-visible js"
+                    data-fragment-index="1">
+'use strict';
 
-const test = () => {
-    console.log('hello world');
+//ES5
+[1, 2, 3].map(function (i) {
+    return i * 2;
+}); // [1, 4, 6]
 
-    return () => "hello ".repeat(5);
+//ES6
+[1, 2, 3].map((i) => i * 2); // [2, 4, 6]
+                </code>
+                <code class="full fragment current-visible js"
+                    data-fragment-index="2" data-trim data-noescape>
+'use strict';
+
+//ES6
+const MyConstructor = function () {
+
+    //this est MyConstructor
+
+    <mark class="mark">this</mark>.arr = [1, 2, 3];
+
+    return this.arr.map((i) => {
+        //this est toujours MyConstructor
+        return i * <mark class="mark">this</mark>.arr.length;
+    });
 };
+
+MyConstructor(); // [3, 6, 9];
+                </code>
+                <code class="full fragment current-visible js"
+                    data-fragment-index="3" data-trim data-noescape>
+'use strict';
+
+//ES5
+for (let i = 0; i <= 21; i++) {
+    var j = i * 2;
+}
+console.log(j); //42 ¯\_(ツ)_/¯
+
+//ES6
+for (const i = 0; i <= 21; i++) {
+    let j = i * 2;
+}
+console.log(j); //ReferenceError: j is not defined 👍
+                </code>
+                <code class="full fragment current-visible js"
+                    data-fragment-index="4" data-trim data-noescape>
+'use strict';
+
+//ES6
+const a = 1234;
+a = 5678; //TypeError: Assignment to constant variable
+                </code>
+                <code class="full fragment current-visible js"
+                    data-fragment-index="5" data-trim data-noescape>
+'use strict';
+
+//ES5
+var add = function (a, b) {
+    if (arguments.length === 1) {
+        b = 0; //default
+    }
+    return a + b;
+};
+add(1); // 1
+
+//ES6
+const add = (a, b = 0) => a + b;
+add(1); // 1
+                </code>
+                <code class="full fragment current-visible js"
+                    data-fragment-index="6" data-trim data-noescape>
+'use strict';
+
+//ES5
+var name = 'Toto';
+var text = 'Salut ' + name + '\n Comment tu vas ?';
+// Salut Toto
+// Comment tu vas ?
+
+//ES6
+const name = 'Toto';
+const text = `Salut ${name}
+Comment tu vas ?`;
+// Salut Toto
+// Comment tu vas ?
+                </code>
+                <code class="full fragment current-visible js"
+                    data-fragment-index="7" data-trim data-noescape>
+'use strict';
+
+//ES5
+//callback hell
+doSomethingAsync(function () {
+    doSomethingElse(function () {
+        maybeSomethingElse(function () {
+            ...
+            console.log('done');
+        });
+    });
+});
+
+//ES6
+doSomething()
+    .then(doSomethingElse)
+    .then(maybeSomethingElse)
+    .then(() => console.log('done'))
+    .catch((err) => console.log(err));
+                </code>
+                <code class="full fragment current-visible js"
+                    data-fragment-index="8" data-trim data-noescape>
+'use strict';
+
+const doSomethingAsync = (something) => {
+    return new Promise((resolve, reject) => {
+        doSomething(something, (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
+        });
+    });
+};
+
+doSomethingAsync('toto')
+    .then((result) => console.log(result))
+    .catch((err) => console.log(err));
+                </code>
+                <code class="full fragment current-visible js"
+                    data-fragment-index="9" data-trim data-noescape>
+'use strict';
+
+fetch('http://my-api.io/poneys')
+    .then(doSomething);
+                </code>
+                <code class="full fragment current-visible js"
+                    data-fragment-index="10" data-trim data-noescape>
+// ./services/myService.js
+
+export getSomething = () => {
+    return fetch('http://my-api.io/poneys');
+};
+
+// app.js
+'use strict';
+
+import myService from './services/myService';
+
+myService.getSomething().then(doSomething);
                 </code>
             </pre>
         </div>

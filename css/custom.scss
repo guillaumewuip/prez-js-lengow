@@ -82,6 +82,21 @@ section.has-dark-background {
     margin-bottom: 2em;
 }
 
+.reveal .u-italic {
+    font-style: italic;
+}
+
+.reveal blockquote {
+    width: 100%;
+    margin: 1.5em 0;
+    padding: 0.6em;
+    padding-left: 1em;
+    background: transparent;
+    border: none;
+    border-left: 2px solid hsla(0, 0%, 0%, .4);
+    box-shadow: none;
+}
+
 .reveal ul {
     padding: 0 1em;
 }
@@ -157,4 +172,10 @@ section.has-dark-background {
 }
 .reveal .slides section .fragment.current-visible.current-fragment {
     display: block;
+}
+
+.reveal .mark {
+    background: transparent;
+    padding: 0.3em;
+    border: 2px solid red;
 }
