@@ -18,7 +18,9 @@
         <div class="col-6">
             <div class="content">
                 <h1>ES6</h1>
-                <p>Quelques petits trucs sympas pour écrire du meilleur code.</p>
+                <p>Quelques petits trucs sympas* pour écrire du meilleur code.
+                </p>
+                <p class="small text-right">* Parmi pleins d'autres</p>
             </div>
         </div>
         <div class="col-6">
@@ -42,25 +44,25 @@
             <div class="content">
                 <h1>ES6</h1>
                 <ul>
-                    <li class="fragment" data-fragment-index="1">
+                    <li>
                         Arrow function
                     </li>
-                    <li class="fragment" data-fragment-index="3">
+                    <li class="fragment" data-fragment-index="2">
                         <code>const</code>, <code>let</code>
                     </li>
-                    <li class="fragment" data-fragment-index="5">
+                    <li class="fragment" data-fragment-index="4">
                         Default params
                     </li>
-                    <li class="fragment" data-fragment-index="6">
+                    <li class="fragment" data-fragment-index="5">
                         Template de chaîne
                     </li>
-                    <li class="fragment" data-fragment-index="7">
+                    <li class="fragment" data-fragment-index="6">
                         Promise
                     </li>
-                    <li class="fragment" data-fragment-index="9">
+                    <li class="fragment" data-fragment-index="8">
                         <code>fetch()</code>
                     </li>
-                    <li class="fragment" data-fragment-index="10">
+                    <li class="fragment" data-fragment-index="9">
                         <code>import</code>
                     </li>
                 </ul>
@@ -68,9 +70,17 @@
         </div>
 
         <div class="col-6 max">
-            <pre class="full">
+
+            <div class="w100 h100 fragment current-visible"
+                data-fragment-index="10" >
+                <div class="h100 row row-align-center text-center">
+                    <div> <img src="media/es6.png" alt=""> </div>
+                </div>
+            </div>
+
+            <pre class="full fragment fade-out" data-fragment-index="10">
                 <code class="full fragment current-visible js"
-                    data-fragment-index="1">
+                    data-fragment-index="0">
 'use strict';
 
 //ES5
@@ -82,7 +92,7 @@
 [1, 2, 3].map((i) => i * 2); // [2, 4, 6]
                 </code>
                 <code class="full fragment current-visible js"
-                    data-fragment-index="2" data-trim data-noescape>
+                    data-fragment-index="1" data-trim data-noescape>
 'use strict';
 
 //ES6
@@ -101,7 +111,7 @@ const MyConstructor = function () {
 MyConstructor(); // [3, 6, 9];
                 </code>
                 <code class="full fragment current-visible js"
-                    data-fragment-index="3" data-trim data-noescape>
+                    data-fragment-index="2" data-trim data-noescape>
 'use strict';
 
 //ES5
@@ -117,7 +127,7 @@ for (const i = 0; i <= 21; i++) {
 console.log(j); //ReferenceError: j is not defined 👍
                 </code>
                 <code class="full fragment current-visible js"
-                    data-fragment-index="4" data-trim data-noescape>
+                    data-fragment-index="3" data-trim data-noescape>
 'use strict';
 
 //ES6
@@ -125,7 +135,7 @@ const a = 1234;
 a = 5678; //TypeError: Assignment to constant variable
                 </code>
                 <code class="full fragment current-visible js"
-                    data-fragment-index="5" data-trim data-noescape>
+                    data-fragment-index="4" data-trim data-noescape>
 'use strict';
 
 //ES5
@@ -142,7 +152,7 @@ const add = (a, b = 0) => a + b;
 add(1); // 1
                 </code>
                 <code class="full fragment current-visible js"
-                    data-fragment-index="6" data-trim data-noescape>
+                    data-fragment-index="5" data-trim data-noescape>
 'use strict';
 
 //ES5
@@ -159,7 +169,7 @@ Comment tu vas ?`;
 // Comment tu vas ?
                 </code>
                 <code class="full fragment current-visible js"
-                    data-fragment-index="7" data-trim data-noescape>
+                    data-fragment-index="6" data-trim data-noescape>
 'use strict';
 
 //ES5
@@ -181,7 +191,7 @@ doSomething()
     .catch((err) => console.log(err));
                 </code>
                 <code class="full fragment current-visible js"
-                    data-fragment-index="8" data-trim data-noescape>
+                    data-fragment-index="7" data-trim data-noescape>
 'use strict';
 
 const doSomethingAsync = (something) => {
@@ -201,15 +211,16 @@ doSomethingAsync('toto')
     .catch((err) => console.log(err));
                 </code>
                 <code class="full fragment current-visible js"
-                    data-fragment-index="9" data-trim data-noescape>
+                    data-fragment-index="8" data-trim data-noescape>
 'use strict';
 
 fetch('http://my-api.io/poneys')
     .then(doSomething);
                 </code>
                 <code class="full fragment current-visible js"
-                    data-fragment-index="10" data-trim data-noescape>
+                    data-fragment-index="9" data-trim data-noescape>
 // ./services/myService.js
+'use strict';
 
 export getSomething = () => {
     return fetch('http://my-api.io/poneys');
@@ -218,12 +229,165 @@ export getSomething = () => {
 // app.js
 'use strict';
 
-import myService from './services/myService';
+import { getSomething } from './services/myService';
 
-myService.getSomething().then(doSomething);
+getSomething().then(doSomething);
                 </code>
             </pre>
         </div>
 
     </section>
+
+    <section class="slide">
+        <div class="col-6">
+            <div class="content">
+                <h1>λ</h1>
+                <p>Vous prendrez bien un peu de programmation fonctionnelle ?
+                </p>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="fragment text-center">
+                <p>f : <i>input</i> ⟼<i>output</i></p>
+                <p><i>vs</i></p>
+                <p>mauvaises pratiques jQuery</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide mod-full">
+
+        <div class="col-6 row row-align-center">
+            <div class="content">
+                <h1>λ en JS <span class="small">(extraits)</span></h1>
+                <ul>
+                    <li>Fonctions pures</li>
+                    <li class="fragment" data-fragment-index="1">
+                        <code>map</code>,
+                        <code>filter</code>,
+                        <code>reduce</code>
+                    </li>
+                    <li class="fragment" data-fragment-index="3">
+                        Clôture/Closure
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-6 max">
+            <pre class="full">
+
+                <code class="full fragment current-visible js"
+                    data-fragment-index="0" data-trim data-noescape>
+'use strict';
+
+const $form = $('.js-my-form'),
+      $cgu  = $('.js-cgu');
+
+//BAD
+const checkAndSubmit = () => {
+    if ($cgu.prop('checked')) {
+        $form.submit();
+    }
+};
+checkAndSubmit();
+
+//GOOD
+const checkAndSubmit = ($form, $cgu) => {
+    if ($cgu.prop('checked')) {
+        $form.submit();
+    }
+};
+checkAndSubmit($form, $cgu);
+
+                </code>
+
+                <code class="full fragment current-visible js"
+                    data-fragment-index="1" data-trim data-noescape>
+'use strict';
+
+const petitsPoneys = [ ... ];
+
+const grandsPoneys = petitsPoneys.map(
+    (p) => grandir(p)
+);
+
+const grandsPoneysRouges = grandsPoneys.filter(
+    (p) => p.color === 'red'
+);
+
+const famillePoney = grandsPoneys.reduce(
+    (famille, poney) => {
+        return `${famille} ${poney.emoji}`;
+    },
+    'Famille : '
+); // 'Famille : 🐴 🐎 🏇
+
+                </code>
+
+                <code class="full fragment current-visible js"
+                    data-fragment-index="2" data-trim data-noescape>
+'use strict';
+
+//BTW, don't use the for loop
+
+const poneys = [ ... ];
+
+//BAD
+for (const i = 0; i < poneys.length; i++) {
+    const poney = poneys[i];
+    doSomething(poney);
+}
+
+//GOOD
+poneys.forEach(doSomething);
+
+                </code>
+
+                <code class="full fragment current-visible js"
+                    data-fragment-index="3" data-trim data-noescape>
+'use strict';
+
+const buildColorFilter = (color) => (poney) => {
+    return poney.color === color;
+};
+
+const
+    filterRouge = buildColorFilter('red'),
+    filterBleu  = buildColorFilter('blue');
+
+const
+    poneysRouges = poneys.filter(filterRouge),
+    poneysBleus  = poneys.filter(filterBleu);
+
+                </code>
+
+            </pre>
+        </div>
+
+    </section>
+
+    <section class="slide mod-full">
+
+        <div class="col-6 row row-align-center">
+            <div class="content">
+                <h1>λ en JS </h1>
+                <ul>
+                    <li>Moins de bugs</li>
+                    <li>Fonctions puissantes</li>
+                    <li>Test facile</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-6 row row-align-center">
+            <div class="text-center">
+                <img class="w100" src="media/54.gif">
+                <p class="small">(Ça doit faire cet effet là)</p>
+            </div>
+        </div>
+
+    </section>
+
+
 </section>
