@@ -63,7 +63,7 @@
                         <code>fetch()</code>
                     </li>
                     <li class="fragment" data-fragment-index="9">
-                        <code>import</code>
+                        modules et <code>class</code>
                     </li>
                 </ul>
             </div>
@@ -222,6 +222,15 @@ fetch('http://my-api.io/poneys')
 // ./services/myService.js
 'use strict';
 
+export class Say extends Something {
+    constructor(msg) {
+        this.msg = msg;
+    }
+    saySomething() {
+        console.log(this.msg);
+    }
+};
+
 export getSomething = () => {
     return fetch('http://my-api.io/poneys');
 };
@@ -229,7 +238,10 @@ export getSomething = () => {
 // app.js
 'use strict';
 
-import { getSomething } from './services/myService';
+import { Say,  getSomething } from './services/myService';
+
+const say = new Say('hello world');
+say.saySomething(); //hello world
 
 getSomething().then(doSomething);
                 </code>
