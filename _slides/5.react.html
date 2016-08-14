@@ -263,4 +263,114 @@ ReactDOM.render(
 
     </section>
 
+    <section class="slide">
+
+        <div class="col-6 row row-align-center">
+            <div class="content">
+                <h2 class="sub-head">React</h2>
+                <h1><code>state</code></h1>
+                <p>L'état du composant</p>
+
+                <div class="small u-margin-top fragment"
+                    data-fragment-index="0">
+                    <b>Exemple</b>
+                    <div class="fragment js-react-example5-1"
+                        data-fragment-index="0"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <pre class="full">
+
+                <code class="fragment current-visible full language-jsx"
+                    data-fragment-index="0">
+
+const Item = ({ poney }) => (
+    &lt;li&gt;{poney.emoji} ({poney.color})&lt;/li&gt;
+);
+
+const List = (props) => {
+    var poneys = props.poneys.map((p, i) => (
+        &lt;Item key={i} poney={p} /&gt;
+    ));
+    return (&lt;div&gt;
+        &lt;p&gt;Famille Poney :&lt;/p&gt;
+        &lt;ul&gt;{poneys}&lt;/ul&gt;
+    &lt;/div&gt;);
+};
+
+const poneys = [{ emoji: '🐴', color: 'red' }, ... ];
+
+ReactDOM.render(
+    &lt;List poneys={poneys} /&gt;,
+    document.querySelector('.js-react-example5-1')
+);
+                </code>
+
+                <code class="fragment current-visible full language-jsx"
+                    data-fragment-index="1">
+
+const FilterBar = ({ filter }) => (
+    &lt;div&gt;
+        &lt;span
+            onClick={() =&gt; filter('all')}&gt;
+            All
+        &lt;/span&gt;
+        &lt;span
+            onClick={() =&gt; filter('red')}&gt;
+            Rouge
+        &lt;/span&gt;
+        &lt;span
+            onClick={() =&gt; filter('blue')}&gt;
+            Blue
+        &lt;/span&gt;
+    &lt;/div&gt;
+);
+                </code>
+
+                <code class="fragment current-visible full language-jsx"
+                    data-fragment-index="2">
+class List extends React.component {
+    constructor() {
+        super();
+        this.state = {
+            filter: 'all',
+        };
+    }
+    _handleFilter(filter) {
+        this.setState({ filter: filter });
+    }
+    ...
+                </code>
+
+                <code class="fragment current-visible full language-jsx"
+                    data-fragment-index="3">
+    ...
+    render() {
+        var poneys = this.props.poneys
+            .filter((p) => {
+                return this.state.filter === 'all'
+                    || this.state.filter === p.color;
+            })
+            .map((p, i) => (
+                &lt;Item key={i} emoji={p.emoji} /&gt;
+            ));
+
+        return (&lt;div&gt;
+            &lt;p&gt;Famille Poney :&lt;/p&gt;
+            &lt;ul&gt;{poneys}&lt;/ul&gt;
+            &lt;FilterBar
+                filter={this._handleFilter.bind(this)}
+            /&gt;
+        &lt;/div&gt;);
+    }
+};
+                </code>
+
+            </pre>
+        </div>
+
+    </section>
+
 </section>

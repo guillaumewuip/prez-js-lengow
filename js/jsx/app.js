@@ -206,4 +206,116 @@ var List = function List(props) {
 var poneys = ['🐴', '🐎', '🏇'];
 
 ReactDOM.render(React.createElement(List, { poneys: poneys }), document.querySelector('.js-react-example4-1'));
+
+/*
+ * Example 5
+ */
+
+var Item5 = function Item5(_ref) {
+    var poney = _ref.poney;
+
+    var c = poney.color;
+    return React.createElement(
+        'li',
+        null,
+        poney.emoji,
+        ' (',
+        React.createElement(
+            'span',
+            { style: { color: c } },
+            c
+        ),
+        ')'
+    );
+};
+
+var poneys5 = [{ emoji: '🐴', color: 'red' }, { emoji: '🐎', color: 'blue' }, { emoji: '🏇', color: 'red' }];
+
+var FilterBar = function FilterBar(props) {
+    return React.createElement(
+        'p',
+        { className: 'fragment', 'data-fragment-index': '1' },
+        React.createElement(
+            'span',
+            {
+                onClick: function onClick() {
+                    return props.filter('all');
+                } },
+            'All'
+        ),
+        ' | ',
+        React.createElement(
+            'span',
+            {
+                onClick: function onClick() {
+                    return props.filter('red');
+                } },
+            'Rouge'
+        ),
+        ' | ',
+        React.createElement(
+            'span',
+            {
+                onClick: function onClick() {
+                    return props.filter('blue');
+                } },
+            'Blue'
+        )
+    );
+};
+
+var List5_2 = function (_React$Component5) {
+    _inherits(List5_2, _React$Component5);
+
+    function List5_2() {
+        _classCallCheck(this, List5_2);
+
+        var _this5 = _possibleConstructorReturn(this, Object.getPrototypeOf(List5_2).call(this));
+
+        _this5.state = {
+            filter: 'all'
+        };
+        return _this5;
+    }
+
+    _createClass(List5_2, [{
+        key: '_handleFilter',
+        value: function _handleFilter(filter) {
+            this.setState({ filter: filter });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this6 = this;
+
+            var poneys = this.props.poneys.filter(function (p) {
+                return _this6.state.filter === 'all' || _this6.state.filter === p.color;
+            }).map(function (p, i) {
+                return React.createElement(Item5, { key: i, poney: p });
+            });
+
+            return React.createElement(
+                'div',
+                null,
+                React.createElement(
+                    'p',
+                    null,
+                    'Famille Poney :'
+                ),
+                React.createElement(
+                    'ul',
+                    null,
+                    poneys
+                ),
+                React.createElement(FilterBar, { filter: this._handleFilter.bind(this) })
+            );
+        }
+    }]);
+
+    return List5_2;
+}(React.Component);
+
+;
+
+ReactDOM.render(React.createElement(List5_2, { poneys: poneys5 }), document.querySelector('.js-react-example5-1'));
 //# sourceMappingURL=app.js.map

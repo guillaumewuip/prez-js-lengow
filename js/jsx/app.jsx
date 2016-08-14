@@ -118,3 +118,70 @@ ReactDOM.render(
     <List poneys={poneys} />,
     document.querySelector('.js-react-example4-1')
 );
+
+/*
+ * Example 5
+ */
+
+const Item5 = ({ poney }) => {
+    const c = poney.color;
+    return (
+        <li>{poney.emoji} (<span style={{ color: c }}>{c}</span>)</li>
+    );
+};
+
+const poneys5 = [
+    { emoji: '🐴', color: 'red' },
+    { emoji: '🐎', color: 'blue' },
+    { emoji: '🏇', color: 'red' },
+];
+
+const FilterBar = (props) => (
+    <p className="fragment" data-fragment-index="1">
+        <span
+            onClick={() => props.filter('all')}>
+            All
+        </span> | <span
+            onClick={() => props.filter('red')}>
+            Rouge
+        </span> | <span
+            onClick={() => props.filter('blue')}>
+            Blue
+        </span>
+    </p>
+);
+
+class List5_2 extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            filter: 'all',
+        };
+    }
+    _handleFilter(filter) {
+        this.setState({ filter: filter });
+    }
+    render() {
+        var poneys = this.props.poneys
+            .filter((p) => {
+                return this.state.filter === 'all'
+                    || this.state.filter === p.color;
+            })
+            .map((p, i) => (
+                <Item5 key={i} poney={p} />
+            ));
+
+        return (
+            <div>
+                <p>Famille Poney :</p>
+                <ul>{poneys}</ul>
+                <FilterBar filter={this._handleFilter.bind(this)}/>
+            </div>
+        );
+    }
+};
+
+ReactDOM.render(
+    <List5_2 poneys={poneys5} />,
+    document.querySelector('.js-react-example5-1')
+);
