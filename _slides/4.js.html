@@ -91,8 +91,8 @@
 //ES6
 [1, 2, 3].map((i) => i * 2); // [2, 4, 6]
                 </code>
-                <code class="full fragment current-visible language-js"
-                    data-fragment-index="1" data-trim data-noescape>
+                <code class="full fragment current-visible language-js mark-this"
+                    data-fragment-index="1">
 'use strict';
 
 //ES6
@@ -100,18 +100,18 @@ const MyConstructor = function () {
 
     //this est MyConstructor
 
-    <mark class="mark">this</mark>.arr = [1, 2, 3];
+    this.arr = [1, 2, 3];
 
     return this.arr.map((i) => {
         //this est toujours MyConstructor
-        return i * <mark class="mark">this</mark>.arr.length;
+        return i * this.arr.length;
     });
 };
 
 MyConstructor(); // [3, 6, 9];
                 </code>
                 <code class="full fragment current-visible language-js"
-                    data-fragment-index="2" data-trim data-noescape>
+                    data-fragment-index="2">
 'use strict';
 
 //ES5
@@ -127,7 +127,7 @@ for (const i = 0; i <= 21; i++) {
 console.log(j); //ReferenceError: j is not defined 👍
                 </code>
                 <code class="full fragment current-visible language-js"
-                    data-fragment-index="3" data-trim data-noescape>
+                    data-fragment-index="3">
 'use strict';
 
 //ES6
@@ -136,7 +136,7 @@ a = 5678;
 //TypeError: Assignment to constant variable
                 </code>
                 <code class="full fragment current-visible language-js"
-                    data-fragment-index="4" data-trim data-noescape>
+                    data-fragment-index="4">
 'use strict';
 
 //ES5
@@ -153,7 +153,7 @@ const add = (a, b = 0) => a + b;
 add(1); // 1
                 </code>
                 <code class="full fragment current-visible language-js"
-                    data-fragment-index="5" data-trim data-noescape>
+                    data-fragment-index="5">
 'use strict';
 
 //ES5
@@ -170,7 +170,7 @@ Comment tu vas ?`;
 // Comment tu vas ?
                 </code>
                 <code class="full fragment current-visible language-js"
-                    data-fragment-index="6" data-trim data-noescape>
+                    data-fragment-index="6">
 'use strict';
 
 //ES5
@@ -192,7 +192,7 @@ doSomething()
     .catch((err) => console.log(err));
                 </code>
                 <code class="full fragment current-visible language-js"
-                    data-fragment-index="7" data-trim data-noescape>
+                    data-fragment-index="7">
 'use strict';
 
 const doSomethingAsync = (something) => {
@@ -212,14 +212,14 @@ doSomethingAsync('toto')
     .catch((err) => console.log(err));
                 </code>
                 <code class="full fragment current-visible language-js"
-                    data-fragment-index="8" data-trim data-noescape>
+                    data-fragment-index="8">
 'use strict';
 
 fetch('http://my-api.io/poneys')
     .then(doSomething);
                 </code>
                 <code class="full fragment current-visible language-js"
-                    data-fragment-index="9" data-trim data-noescape>
+                    data-fragment-index="9">
 // ./services/myService.js
 'use strict';
 
@@ -291,7 +291,7 @@ getSomething().then(doSomething);
             <pre class="full">
 
                 <code class="full fragment current-visible language-js"
-                    data-fragment-index="0" data-trim data-noescape>
+                    data-fragment-index="0">
 'use strict';
 
 const $form = $('.js-my-form'),
@@ -316,7 +316,7 @@ checkAndSubmit($form, $cgu);
                 </code>
 
                 <code class="full fragment current-visible language-js"
-                    data-fragment-index="1" data-trim data-noescape>
+                    data-fragment-index="1">
 'use strict';
 
 const petitsPoneys = [ ... ];
@@ -339,7 +339,7 @@ const famillePoney = grandsPoneys.reduce(
                 </code>
 
                 <code class="full fragment current-visible language-js"
-                    data-fragment-index="2" data-trim data-noescape>
+                    data-fragment-index="2">
 'use strict';
 
 //BTW, don't use the for loop
@@ -358,7 +358,7 @@ poneys.forEach(doSomething);
                 </code>
 
                 <code class="full fragment current-visible language-js"
-                    data-fragment-index="3" data-trim data-noescape>
+                    data-fragment-index="3">
 'use strict';
 
 const buildColorFilter = (color) => (poney) => {
