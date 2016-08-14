@@ -196,6 +196,7 @@
 					connected = true;
 
 					setupKeyboard();
+					setupTouch();
 					setupNotes();
 					setupTimer();
 
@@ -275,6 +276,16 @@
 				} );
 
 			}
+
+			function setupTouch() {
+
+				document.addEventListener( 'touchend', function( event ) {
+					currentSlide.contentWindow.postMessage( JSON.stringify({
+                        method: 'triggerKey', args: [ 32 ] }), '*' );
+				} );
+
+			}
+
 
 			/**
 			 * Creates the preview iframes.

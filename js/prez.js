@@ -46,6 +46,14 @@
                 src: 'plugin/notes/notes.js',
                 async: true
             },
+            {
+                src: 'lib/socket.io.js',
+                async: true,
+            },
+            {
+                src: 'plugin/notes-server/client.js',
+                async: true,
+            },
         ]
     });
 

@@ -12,7 +12,7 @@ io = io(server);
 
 var opts = {
 	port :      1947,
-	baseDir :   __dirname + '/../../'
+	baseDir :   __dirname + '/../../_site/'
 };
 
 io.on( 'connection', function( socket ) {
@@ -33,7 +33,7 @@ io.on( 'connection', function( socket ) {
 
 });
 
-[ 'css', 'js', 'images', 'plugin', 'lib' ].forEach( function( dir ) {
+[ 'css', 'js', 'images', 'plugin', 'lib', 'media' ].forEach( function( dir ) {
 	app.use( '/' + dir, staticDir( opts.baseDir + dir ) );
 });
 
