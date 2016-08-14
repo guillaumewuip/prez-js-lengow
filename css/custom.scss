@@ -69,9 +69,22 @@ section.has-dark-background {
     box-sizing: border-box;
 }
 
+input {
+    font-size: 1em;
+}
+
 .h1.mod-code {
     font-family: 'Cousine', 'Courier', 'sans-serif';
     font-size: $heading3Size;
+}
+.reveal .sub-head {
+    font-size: 0.9em;
+    color: hsla(0, 0%, 0%, 0.6);
+    margin-bottom: 0.1em;
+}
+
+.reveal .u-margin-none {
+    margin: 0;
 }
 
 .reveal .u-margin-top {
@@ -137,6 +150,8 @@ section.has-dark-background {
     position: initial;
     width: auto;
     line-height: 1.6em;
+    border-radius: 0;
+    padding: 0;
 }
 
     .reveal pre.full {
@@ -185,4 +200,9 @@ section.has-dark-background {
     background: transparent;
     padding: 0.3em;
     border: 2px solid red;
+}
+
+.reveal section img.no-border {
+    box-shadow: none;
+    border: none;
 }

@@ -79,7 +79,7 @@
             </div>
 
             <pre class="full fragment fade-out" data-fragment-index="10">
-                <code class="full fragment current-visible js"
+                <code class="full fragment current-visible language-js"
                     data-fragment-index="0">
 'use strict';
 
@@ -91,7 +91,7 @@
 //ES6
 [1, 2, 3].map((i) => i * 2); // [2, 4, 6]
                 </code>
-                <code class="full fragment current-visible js"
+                <code class="full fragment current-visible language-js"
                     data-fragment-index="1" data-trim data-noescape>
 'use strict';
 
@@ -110,7 +110,7 @@ const MyConstructor = function () {
 
 MyConstructor(); // [3, 6, 9];
                 </code>
-                <code class="full fragment current-visible js"
+                <code class="full fragment current-visible language-js"
                     data-fragment-index="2" data-trim data-noescape>
 'use strict';
 
@@ -126,15 +126,16 @@ for (const i = 0; i <= 21; i++) {
 }
 console.log(j); //ReferenceError: j is not defined 👍
                 </code>
-                <code class="full fragment current-visible js"
+                <code class="full fragment current-visible language-js"
                     data-fragment-index="3" data-trim data-noescape>
 'use strict';
 
 //ES6
 const a = 1234;
-a = 5678; //TypeError: Assignment to constant variable
+a = 5678;
+//TypeError: Assignment to constant variable
                 </code>
-                <code class="full fragment current-visible js"
+                <code class="full fragment current-visible language-js"
                     data-fragment-index="4" data-trim data-noescape>
 'use strict';
 
@@ -151,7 +152,7 @@ add(1); // 1
 const add = (a, b = 0) => a + b;
 add(1); // 1
                 </code>
-                <code class="full fragment current-visible js"
+                <code class="full fragment current-visible language-js"
                     data-fragment-index="5" data-trim data-noescape>
 'use strict';
 
@@ -168,7 +169,7 @@ Comment tu vas ?`;
 // Salut Toto
 // Comment tu vas ?
                 </code>
-                <code class="full fragment current-visible js"
+                <code class="full fragment current-visible language-js"
                     data-fragment-index="6" data-trim data-noescape>
 'use strict';
 
@@ -190,7 +191,7 @@ doSomething()
     .then(() => console.log('done'))
     .catch((err) => console.log(err));
                 </code>
-                <code class="full fragment current-visible js"
+                <code class="full fragment current-visible language-js"
                     data-fragment-index="7" data-trim data-noescape>
 'use strict';
 
@@ -210,14 +211,14 @@ doSomethingAsync('toto')
     .then((result) => console.log(result))
     .catch((err) => console.log(err));
                 </code>
-                <code class="full fragment current-visible js"
+                <code class="full fragment current-visible language-js"
                     data-fragment-index="8" data-trim data-noescape>
 'use strict';
 
 fetch('http://my-api.io/poneys')
     .then(doSomething);
                 </code>
-                <code class="full fragment current-visible js"
+                <code class="full fragment current-visible language-js"
                     data-fragment-index="9" data-trim data-noescape>
 // ./services/myService.js
 'use strict';
@@ -238,7 +239,7 @@ export getSomething = () => {
 // app.js
 'use strict';
 
-import { Say,  getSomething } from './services/myService';
+import { Say, getSomething } from './services/myService';
 
 const say = new Say('hello world');
 say.saySomething(); //hello world
@@ -289,7 +290,7 @@ getSomething().then(doSomething);
         <div class="col-6 max">
             <pre class="full">
 
-                <code class="full fragment current-visible js"
+                <code class="full fragment current-visible language-js"
                     data-fragment-index="0" data-trim data-noescape>
 'use strict';
 
@@ -314,7 +315,7 @@ checkAndSubmit($form, $cgu);
 
                 </code>
 
-                <code class="full fragment current-visible js"
+                <code class="full fragment current-visible language-js"
                     data-fragment-index="1" data-trim data-noescape>
 'use strict';
 
@@ -337,7 +338,7 @@ const famillePoney = grandsPoneys.reduce(
 
                 </code>
 
-                <code class="full fragment current-visible js"
+                <code class="full fragment current-visible language-js"
                     data-fragment-index="2" data-trim data-noescape>
 'use strict';
 
@@ -356,7 +357,7 @@ poneys.forEach(doSomething);
 
                 </code>
 
-                <code class="full fragment current-visible js"
+                <code class="full fragment current-visible language-js"
                     data-fragment-index="3" data-trim data-noescape>
 'use strict';
 

@@ -85,10 +85,30 @@ module.exports = function(grunt) {
             //}
         },
 
+        babel: {
+            options: {
+                sourceMap: true,
+                presets: ['es2015', 'react']
+            },
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: 'js/jsx/',
+                    src: ['app.jsx'],
+                    dest: 'js/jsx/',
+                    ext: '.js'
+                }]
+            }
+        },
+
         watch: {
             js: {
-                files: [ 'Gruntfile.js', 'js/*.js' ],
-                tasks: 'js'
+                files: [ 'Gruntfile.js', 'js/*.*' ],
+                tasks: ['js', 'jekyll'],
+            },
+            jsx: {
+                files: [ 'Gruntfile.js', 'js/jsx/*.jsx' ],
+                tasks: ['babel', 'jekyll'],
             },
             theme: {
                 files: [
@@ -107,8 +127,7 @@ module.exports = function(grunt) {
             options: {
                 livereload: true
             }
-        }
-
+        },
     });
 
     // Dependencies
@@ -119,6 +138,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks( 'grunt-autoprefixer' );
     grunt.loadNpmTasks( 'grunt-zip' );
     grunt.loadNpmTasks( 'grunt-shell' );
+    grunt.loadNpmTasks( 'grunt-babel' );
 
     // Default task
     grunt.registerTask( 'jekyll', [ 'shell:jekyllBuild' ] );

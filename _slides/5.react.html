@@ -1,0 +1,113 @@
+---
+# React
+---
+
+<section class="slide">
+
+    <section class="slide text-center"
+        data-background-color="hsl(222, 67%, 58%)">
+        <div class="content">
+            <h1>
+                <span class="small fade-white">2.</span>
+                React & Redux
+            </h1>
+            <p class="fragment small text-right u-margin-top">Eh bah enfin !</p>
+        </div>
+    </section>
+
+    <section class="slide">
+
+        <div class="col-6 row row-align-center">
+            <div class="content">
+                <h2 class="sub-head">React</h2>
+                <h1>C'est quoi ?</h1>
+
+                <ul class="w100">
+                    <li>
+                        <img class="no-border u-margin-none"
+                        src="media/fb.png" alt="">
+                    </li>
+                    <li>
+                        Librairie de templating
+                        <p class="small">ie. ≠ framework, ≠ modèle</p>
+                    </li>
+                    <li>
+                        Caractéristiques
+                        <p class="small">Composants, JSX</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-6 row row-align-center text-center">
+            <div class="content">
+                <p class="fragment"><em>data ⟷ vue HTML</em></p>
+                <div class="fragment text-left u-margin-top">
+                    <p class="small">Exemple</p>
+                    <div class="js-react-example1"></div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="slide">
+
+        <div class="col-6 row row-align-center">
+            <div class="content">
+                <h2 class="sub-head">React</h2>
+                <h1>Un composant</h1>
+                <ul>
+                    <li>Le créer</li>
+                    <li>L'attacher</li>
+                </ul>
+
+                <div class="small u-margin-top fragment"
+                    data-fragment-index="0">
+                    Exemples :
+                    <div class="fragment js-react-example2-1"
+                        data-fragment-index="0"></div>
+                    <div class="fragment js-react-example2-2"
+                        data-fragment-index="1"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <pre class="full">
+
+                <code class="fragment current-visible full language-jsx"
+                    data-fragment-index="0">
+class Example2_1 extends React.Component {
+    render() {
+        return (
+            &lt;p&gt;Hello world/&lt;p&gt;
+        );
+    }
+};
+
+ReactDOM.render(
+    &lt;Example2_1 /&gt;,
+    document.querySelector('.js-react-example2-1')
+);
+                </code>
+                <code class="full language-jsx fragment current-visible"
+                    data-fragment-index="1">
+
+const Example2_2 = () => (
+    &lt;p&gt;Hello world/&lt;p&gt;
+);
+
+ReactDOM.render(
+    &lt;Example2_2 /&gt;,
+    document.querySelector('.js-react-example2-2')
+);
+
+                </code>
+            </pre>
+        </div>
+
+    </section>
+
+
+</section>
