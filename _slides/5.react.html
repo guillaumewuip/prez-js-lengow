@@ -36,6 +36,7 @@
                         <p class="small">Composants, JSX</p>
                     </li>
                 </ul>
+                <blockquote class="small">De l'HTML dans du JS</blockquote>
             </div>
         </div>
 
@@ -43,7 +44,7 @@
             <div class="content">
                 <p class="fragment"><em>data ⟷ vue HTML</em></p>
                 <div class="fragment text-left u-margin-top">
-                    <p class="small">Exemple</p>
+                    <p class="small"><b>Exemple</b></p>
                     <div class="js-react-example1"></div>
                 </div>
             </div>
@@ -64,7 +65,7 @@
 
                 <div class="small u-margin-top fragment"
                     data-fragment-index="0">
-                    Exemples :
+                    <b>Exemples</b>
                     <div class="fragment js-react-example2-1"
                         data-fragment-index="0"></div>
                     <div class="fragment js-react-example2-2"
@@ -81,7 +82,7 @@
 class Example2_1 extends React.Component {
     render() {
         return (
-            &lt;p&gt;Hello world/&lt;p&gt;
+            &lt;p&gt;Hello world&lt;/p&gt;
         );
     }
 };
@@ -95,7 +96,7 @@ ReactDOM.render(
                     data-fragment-index="1">
 
 const Example2_2 = () => (
-    &lt;p&gt;Hello world/&lt;p&gt;
+    &lt;p&gt;Hello world&lt;/p&gt;
 );
 
 ReactDOM.render(
@@ -109,5 +110,157 @@ ReactDOM.render(
 
     </section>
 
+    <section class="slide">
+
+        <div class="col-6 row row-align-center">
+            <div class="content">
+                <h2 class="sub-head">React</h2>
+                <h1><code>props</code></h1>
+                <p>Passer n'importe quoi au composant</p>
+                <ul>
+                    <li>Des données</li>
+                    <li class="fragment" data-fragment-index="2">
+                        Des fonctions
+                    </li>
+                </ul>
+
+                <div class="small u-margin-top fragment"
+                    data-fragment-index="0">
+                    <b>Exemples</b>
+                    <div class="fragment js-react-example3-1"
+                        data-fragment-index="0"></div>
+                    <div class="fragment js-react-example3-2"
+                        data-fragment-index="1"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 max">
+            <pre class="full">
+
+                <code class="fragment current-visible full language-jsx"
+                    data-fragment-index="0">
+class Example3_1 extends React.Component {
+    render() {
+        return (
+            &lt;p&gt;{this.props.text}&lt;/p&gt;
+        );
+    }
+};
+
+ReactDOM.render(
+    &lt;Example3_1 text="Petit poney" /&gt;,
+    document.querySelector('.js-react-example3-1')
+);
+                </code>
+                <code class="full language-jsx fragment current-visible"
+                    data-fragment-index="1">
+
+const Example3_2 = (props) => (
+    &lt;p&gt;{props.text}&lt;/p&gt;
+);
+
+ReactDOM.render(
+    &lt;Example3_2 text="Petit poney" /&gt;,
+    document.querySelector('.js-react-example3-2')
+);
+
+                </code>
+                <code class="full language-jsx fragment current-visible"
+                    data-fragment-index="2">
+
+const Example3_2 = (props) => (
+    &lt;p onClick={props.coucou}&gt;{props.text}&lt;/p&gt;
+);
+
+ReactDOM.render(
+    &lt;Example3_2
+        text="Petit poney"
+        coucou={() => alert('coucou');} /&gt;,
+    document.querySelector('.js-react-example3-2')
+);
+
+                </code>
+            </pre>
+        </div>
+
+    </section>
+
+    <section class="slide">
+
+        <div class="col-6 row row-align-center">
+            <div class="content">
+                <h2 class="sub-head">React</h2>
+                <h1>Jouer aux Legos™</h1>
+                <p>ie. composition de composants</p>
+
+                <div class="small u-margin-top fragment"
+                    data-fragment-index="0">
+                    <b>Exemple</b>
+                    <div class="fragment js-react-example4-1"
+                        data-fragment-index="0"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <pre class="full">
+
+                <code class="fragment current-visible full language-jsx"
+                    data-fragment-index="0">
+
+const Item = (props) => (
+    &lt;li&gt;{props.emoji}&lt;/li&gt;
+);
+
+const List () =&gt; (
+    &lt;div&gt;
+        &lt;p&gt;Famille Poney:&lt;/p&gt;
+        &lt;ul&gt;
+            &lt;Item emoji="🐴" /&gt;
+            &lt;Item emoji="🐎" /&gt;
+            &lt;Item emoji="🏇" /&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+);
+
+ReactDOM.render(
+    &lt;List /&gt;,
+    document.querySelector('.js-react-example4-1')
+);
+                </code>
+
+                <code class="fragment current-visible full language-jsx"
+                    data-fragment-index="2">
+
+const List = (props) => {
+    var poneys = props.poneys.map((p, i) => (
+        &lt;Item key={i} emoji={p} /&gt;
+    ));
+    return (&lt;div&gt;
+        &lt;p&gt;Famille Poney :&lt;/p&gt;
+        &lt;ul&gt;{poneys}&lt;/ul&gt;
+    &lt;/div&gt;);
+};
+
+const poneys = ['🐴', '🐎', '🏇'];
+
+ReactDOM.render(
+    &lt;List poneys={poneys} /&gt;,
+    document.querySelector('.js-react-example4-1')
+);
+                </code>
+
+            </pre>
+        </div>
+
+        <div class="over-all fragment current-visible"
+            data-fragment-index=1">
+            <div class="h100 row row-align-center text-center">
+                <img class="over-all-image" src="media/deeper.jpg" alt="">
+            </div>
+        </div>
+
+    </section>
 
 </section>

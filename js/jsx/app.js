@@ -85,6 +85,10 @@ var Example1 = function (_React$Component2) {
 
 ReactDOM.render(React.createElement(Example1, null), document.querySelector('.js-react-example1'));
 
+/*
+ * Example 2
+ */
+
 var Example2_1 = function (_React$Component3) {
     _inherits(Example2_1, _React$Component3);
 
@@ -121,4 +125,85 @@ var Example2_2 = function Example2_2() {
 ReactDOM.render(React.createElement(Example2_1, null), document.querySelector('.js-react-example2-1'));
 
 ReactDOM.render(React.createElement(Example2_2, null), document.querySelector('.js-react-example2-2'));
+
+/*
+ * Example 3
+ */
+
+var Example3_1 = function (_React$Component4) {
+    _inherits(Example3_1, _React$Component4);
+
+    function Example3_1() {
+        _classCallCheck(this, Example3_1);
+
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(Example3_1).apply(this, arguments));
+    }
+
+    _createClass(Example3_1, [{
+        key: 'render',
+        value: function render() {
+            return React.createElement(
+                'p',
+                { onClick: this.props.click },
+                this.props.text
+            );
+        }
+    }]);
+
+    return Example3_1;
+}(React.Component);
+
+;
+
+var Example3_2 = function Example3_2(props) {
+    return React.createElement(
+        'p',
+        { onClick: props.click },
+        props.text
+    );
+};
+
+ReactDOM.render(React.createElement(Example3_1, { text: 'Petit poney', click: function click() {
+        return alert('coucou');
+    } }), document.querySelector('.js-react-example3-1'));
+
+ReactDOM.render(React.createElement(Example3_2, { text: 'Petit poney', click: function click() {
+        return alert('coucou');
+    } }), document.querySelector('.js-react-example3-2'));
+
+/*
+ * Example 4
+ */
+
+var Item = function Item(props) {
+    return React.createElement(
+        'li',
+        null,
+        props.emoji
+    );
+};
+
+var List = function List(props) {
+    var poneys = props.poneys.map(function (p, i) {
+        return React.createElement(Item, { key: i, emoji: p });
+    });
+    return React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'p',
+            null,
+            'Famille Poney :'
+        ),
+        React.createElement(
+            'ul',
+            null,
+            poneys
+        )
+    );
+};
+
+var poneys = ['🐴', '🐎', '🏇'];
+
+ReactDOM.render(React.createElement(List, { poneys: poneys }), document.querySelector('.js-react-example4-1'));
 //# sourceMappingURL=app.js.map
