@@ -8,7 +8,7 @@
         progress:    true,
         history:     true,
         center:      true,
-        slideNumber: true,
+        slideNumber: 'c/t',
 
         transition: 'none',
 
