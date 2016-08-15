@@ -313,18 +313,18 @@ ReactDOM.render(
 
 const FilterBar = ({ filter }) => (
     &lt;div&gt;
-        &lt;span
+        &lt;button
             onClick={() =&gt; filter('all')}&gt;
-            All
-        &lt;/span&gt;
-        &lt;span
+            Tout
+        &lt;/button&gt;
+        &lt;button
             onClick={() =&gt; filter('red')}&gt;
             Rouge
-        &lt;/span&gt;
-        &lt;span
+        &lt;/button&gt;
+        &lt;button
             onClick={() =&gt; filter('blue')}&gt;
-            Blue
-        &lt;/span&gt;
+            Bleu
+        &lt;/button&gt;
     &lt;/div&gt;
 );
                 </code>
@@ -354,7 +354,7 @@ class List extends React.component {
                     || this.state.filter === p.color;
             })
             .map((p, i) => (
-                &lt;Item key={i} emoji={p.emoji} /&gt;
+                &lt;Item key={i} poney={p.emoji} /&gt;
             ));
 
         return (&lt;div&gt;
@@ -369,6 +369,56 @@ class List extends React.component {
                 </code>
 
             </pre>
+        </div>
+
+    </section>
+
+    <section class="slide">
+
+        <div class="content">
+
+            <h1 class="text-center">
+                <code>props</code> vs <code>state</code>
+            </h1>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th><code>props</code></th>
+                        <th><code>state</code></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Pourquoi ?</td>
+                        <td>Configuration</td>
+                        <td>État</td>
+                    </tr>
+                    <tr>
+                        <td>Présence</td>
+                        <td>Habituelle</td>
+                        <td>Rare</td>
+                    </tr>
+                    <tr>
+                        <td>Modifiable*</td>
+                        <td>Non (immutable)</td>
+                        <td>Oui**</td>
+                    </tr>
+                    <tr>
+                        <td>Utilisation</td>
+                        <td>Tout le temps</td>
+                        <td>Le moins possible</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="small text-right u-margin-top">
+                * Du point de vue du composant
+            </p>
+            <p class="small text-right">
+                ** Crée un nouveau <code>render()</code> du composant
+            </p>
+
         </div>
 
     </section>

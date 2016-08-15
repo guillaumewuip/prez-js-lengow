@@ -201,6 +201,14 @@ input {
     border: none;
 }
 
+.reveal table {
+    margin: 1em auto;
+}
+
+    .reveal table td {
+        padding: .5em;
+    }
+
 .over-all {
     position: absolute;
     top: 0;
@@ -212,3 +220,5 @@ input {
     .over-all-image {
         margin: 0 auto !important;
     }
+
+

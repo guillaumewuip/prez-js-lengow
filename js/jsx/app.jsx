@@ -138,16 +138,18 @@ const poneys5 = [
 
 const FilterBar = (props) => (
     <p className="fragment" data-fragment-index="1">
-        <span
+        <button
             onClick={() => props.filter('all')}>
-            All
-        </span> | <span
+            Tout
+        </button>
+        <button
             onClick={() => props.filter('red')}>
             Rouge
-        </span> | <span
+        </button>
+        <button
             onClick={() => props.filter('blue')}>
-            Blue
-        </span>
+            Bleu
+        </button>
     </p>
 );
 

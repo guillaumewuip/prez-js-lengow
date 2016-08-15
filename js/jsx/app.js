@@ -236,30 +236,28 @@ var FilterBar = function FilterBar(props) {
         'p',
         { className: 'fragment', 'data-fragment-index': '1' },
         React.createElement(
-            'span',
+            'button',
             {
                 onClick: function onClick() {
                     return props.filter('all');
                 } },
-            'All'
+            'Tout'
         ),
-        ' | ',
         React.createElement(
-            'span',
+            'button',
             {
                 onClick: function onClick() {
                     return props.filter('red');
                 } },
             'Rouge'
         ),
-        ' | ',
         React.createElement(
-            'span',
+            'button',
             {
                 onClick: function onClick() {
                     return props.filter('blue');
                 } },
-            'Blue'
+            'Bleu'
         )
     );
 };
