@@ -79,6 +79,8 @@
             <pre class="full fragment current-visible"
                 data-fragment-index="0">
                 <code class="full language-jsx">
+import React from 'react';
+
 class Example2_1 extends React.Component {
     render() {
         return (
@@ -96,6 +98,8 @@ ReactDOM.render(
             <pre class="full fragment current-visible"
                 data-fragment-index="1">
                 <code class="full language-jsx">
+import React from 'react';
+
 const Example2_2 = () => (
     &lt;p&gt;Hello world&lt;/p&gt;
 );
@@ -138,7 +142,7 @@ ReactDOM.render(
         <div class="col-6 max">
 
             <pre class="full fragment current-visible"
-                data-fragment-index="0">
+                data-fragment-index="0" data-line="5,12">
                 <code class="full language-jsx">
 class Example3_1 extends React.Component {
     render() {
@@ -149,7 +153,9 @@ class Example3_1 extends React.Component {
 };
 
 ReactDOM.render(
-    &lt;Example3_1 text="Petit poney" /&gt;,
+    &lt;Example3_1
+        text="Petit poney"
+        /&gt;,
     document.querySelector('.js-react-example3-1')
 );
                 </code>
@@ -243,7 +249,7 @@ ReactDOM.render(
                 <code class="full language-jsx">
 
 const List = (props) => {
-    var poneys = props.poneys.map((p, i) => (
+    const poneys = props.poneys.map((p, i) => (
         &lt;Item key={i} emoji={p} /&gt;
     ));
     return (&lt;div&gt;
@@ -416,7 +422,7 @@ class List extends React.component {
                     </tr>
                     <tr>
                         <td>Modifiable*</td>
-                        <td>Non (immutable)</td>
+                        <td>Non (immuable)</td>
                         <td>Oui**</td>
                     </tr>
                     <tr>
