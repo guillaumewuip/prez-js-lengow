@@ -1,5 +1,7 @@
 'use strict';
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -234,7 +236,7 @@ var poneys5 = [{ emoji: '🐴', color: 'red' }, { emoji: '🐎', color: 'blue' }
 var FilterBar = function FilterBar(props) {
     return React.createElement(
         'p',
-        { className: 'fragment', 'data-fragment-index': '1' },
+        { className: props.classes, 'data-fragment-index': '1' },
         React.createElement(
             'button',
             {
@@ -305,7 +307,7 @@ var List5_2 = function (_React$Component5) {
                     null,
                     poneys
                 ),
-                React.createElement(FilterBar, { filter: this._handleFilter.bind(this) })
+                React.createElement(FilterBar, { classes: 'fragment', filter: this._handleFilter.bind(this) })
             );
         }
     }]);
@@ -316,4 +318,157 @@ var List5_2 = function (_React$Component5) {
 ;
 
 ReactDOM.render(React.createElement(List5_2, { poneys: poneys5 }), document.querySelector('.js-react-example5-1'));
+
+/**
+ * Redux
+ */
+
+var state = {
+    poneys: [{ id: 1, emoji: '🐴', color: 'red', checked: false }, { id: 2, emoji: '🐎', color: 'blue', checked: false }, { id: 3, emoji: '🏇', color: 'red', checked: false }],
+    filter: 'all'
+};
+
+/**
+ * @param {Object}   props.poney
+    { id: 1, emoji: '🐴', color: 'red',  checked: false }
+ * @param {Function} props.toggle
+ */
+var ItemRedux = function ItemRedux(_ref2) {
+    var poney = _ref2.poney;
+    var toggle = _ref2.toggle;
+
+    var c = poney.get('color');
+    return React.createElement(
+        'li',
+        { className: 'mod-no-style' },
+        React.createElement('input', {
+            type: 'checkbox',
+            id: 'check-' + poney.get('id'),
+            defaultChecked: poney.get('checked'),
+            onClick: function onClick() {
+                return toggle(poney);
+            } }),
+        React.createElement(
+            'label',
+            { htmlFor: 'check-' + poney.get('id') },
+            poney.get('emoji'),
+            ' (',
+            React.createElement(
+                'span',
+                { style: { color: c } },
+                c
+            ),
+            ')'
+        )
+    );
+};
+
+var ListRedux = function ListRedux(_ref3) {
+    var poneys = _ref3.poneys;
+    var togglePoney = _ref3.togglePoney;
+
+    var items = poneys.map(function (p, i) {
+        return React.createElement(ItemRedux, { key: i, poney: p, toggle: togglePoney });
+    });
+    return React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'p',
+            null,
+            'Famille Poney :'
+        ),
+        React.createElement(
+            'ul',
+            null,
+            items
+        )
+    );
+};
+
+var Summary = function Summary(_ref4) {
+    var poneys = _ref4.poneys;
+
+    var n = poneys.reduce(function (count, p) {
+        return p.get('checked') ? count + 1 : count;
+    }, 0);
+    return React.createElement(
+        'p',
+        null,
+        n,
+        ' ',
+        n > 1 ? 'poneys sélectionnés' : 'poney sélectionné'
+    );
+};
+
+var PoneyApp = function PoneyApp(props) {
+    return React.createElement(
+        'div',
+        null,
+        React.createElement(ListRedux, props),
+        React.createElement(Summary, { poneys: props.poneys })
+    );
+};
+
+document.querySelectorAll('.js-redux-example1').forEach(function (elem) {
+    ReactDOM.render(React.createElement(PoneyApp, { poneys: Immutable.fromJS(state.poneys) }), elem);
+});
+
+var togglePoney = function togglePoney(poney) {
+    return {
+        type: 'TOGGLE_PONEY',
+        poney: poney
+    };
+};
+
+var reducer = function reducer(state, action) {
+    var _ret = function () {
+        switch (action.type) {
+            case 'INIT':
+                return {
+                    v: Immutable.fromJS(action.state)
+                };
+                break;
+            case 'TOGGLE_PONEY':
+
+                var poneyIndex = state.get('poneys').findIndex(function (p) {
+                    return p.get('id') === action.poney.get('id');
+                }),
+                    checked = state.get('poneys').get(poneyIndex).get('checked');
+
+                var poney = state.get('poneys').get(poneyIndex).set('checked', !checked);
+
+                return {
+                    v: state.update('poneys', function (poneys) {
+                        return poneys.set(poneyIndex, poney);
+                    })
+                };
+                break;
+            default:
+                break;
+        }
+    }();
+
+    if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+};
+
+var store = Redux.createStore(reducer);
+store.dispatch({
+    type: 'INIT',
+    state: state
+});
+
+var mapStateToProps = function mapStateToProps(state) {
+    return {
+        poneys: state.get('poneys')
+    };
+};
+
+var App = ReactRedux.connect(mapStateToProps, { togglePoney: togglePoney })(PoneyApp);
+
+ReactDOM.render(React.createElement(
+    ReactRedux.Provider,
+    { store: store },
+    React.createElement(App, null)
+), document.querySelector('.js-redux-example2'));
 //# sourceMappingURL=app.js.map

@@ -137,7 +137,7 @@ const poneys5 = [
 ];
 
 const FilterBar = (props) => (
-    <p className="fragment" data-fragment-index="1">
+    <p className={props.classes} data-fragment-index="1">
         <button
             onClick={() => props.filter('all')}>
             Tout
@@ -177,7 +177,7 @@ class List5_2 extends React.Component {
             <div>
                 <p>Famille Poney :</p>
                 <ul>{poneys}</ul>
-                <FilterBar filter={this._handleFilter.bind(this)}/>
+                <FilterBar classes="fragment" filter={this._handleFilter.bind(this)}/>
             </div>
         );
     }
@@ -186,4 +186,123 @@ class List5_2 extends React.Component {
 ReactDOM.render(
     <List5_2 poneys={poneys5} />,
     document.querySelector('.js-react-example5-1')
+);
+
+/**
+ * Redux
+ */
+
+const state = {
+    poneys: [
+        { id: 1, emoji: '🐴', color: 'red',  checked: false },
+        { id: 2, emoji: '🐎', color: 'blue', checked: false },
+        { id: 3, emoji: '🏇', color: 'red',  checked: false },
+    ],
+    filter: 'all',
+};
+
+/**
+ * @param {Object}   props.poney
+    { id: 1, emoji: '🐴', color: 'red',  checked: false }
+ * @param {Function} props.toggle
+ */
+const ItemRedux = ({ poney, toggle }) => {
+    const c = poney.get('color');
+    return (
+        <li className="mod-no-style">
+            <input
+                type="checkbox"
+                id={`check-${poney.get('id')}`}
+                defaultChecked={poney.get('checked')}
+                onClick={() => toggle(poney)} />
+            <label htmlFor={`check-${poney.get('id')}`}>
+                {poney.get('emoji')} (<span style={{ color: c }}>{c}</span>)
+            </label>
+        </li>
+    );
+};
+
+const ListRedux = ({ poneys, togglePoney }) => {
+    const items = poneys.map((p, i) => (
+        <ItemRedux key={i} poney={p} toggle={togglePoney} />
+    ));
+    return (
+        <div>
+            <p>Famille Poney :</p>
+            <ul>{items}</ul>
+        </div>
+    );
+};
+
+const Summary = ({ poneys }) => {
+    const n = poneys.reduce((count, p) => (
+        p.get('checked') ? count + 1 : count
+    ), 0);
+    return <p>{n} {n > 1 ? 'poneys sélectionnés' : 'poney sélectionné'}</p>
+};
+
+const PoneyApp = (props) => (<div>
+    <ListRedux {...props} />
+    <Summary poneys={props.poneys} />
+</div>);
+
+document.querySelectorAll('.js-redux-example1').forEach((elem) => {
+    ReactDOM.render(
+        <PoneyApp poneys={ Immutable.fromJS(state.poneys) } />,
+        elem
+    );
+});
+
+
+const togglePoney = (poney) => {
+    return {
+        type: 'TOGGLE_PONEY',
+        poney,
+    };
+};
+
+const reducer = (state, action) => {
+    switch(action.type) {
+        case 'INIT':
+            return Immutable.fromJS(action.state);
+            break;
+        case 'TOGGLE_PONEY':
+
+            const poneyIndex = state
+                .get('poneys')
+                .findIndex((p) => p.get('id') === action.poney.get('id')),
+                checked = state.get('poneys').get(poneyIndex).get('checked');
+
+            const poney = state.get('poneys')
+                .get(poneyIndex)
+                .set('checked', !checked);
+
+            return state.update(
+                'poneys',
+                (poneys) => poneys.set(poneyIndex, poney)
+            );
+            break;
+        default:
+            break;
+    }
+};
+
+const store = Redux.createStore(reducer);
+store.dispatch({
+    type: 'INIT',
+    state,
+});
+
+const mapStateToProps = (state) => ({
+    poneys: state.get('poneys'),
+    //filter: state.filter,
+});
+
+const App = ReactRedux.connect(mapStateToProps, { togglePoney })(PoneyApp);
+
+ReactDOM.render(
+    <ReactRedux.Provider store={store}>
+        <App />
+    </ReactRedux.Provider>,
+    document.querySelector('.js-redux-example2')
 );

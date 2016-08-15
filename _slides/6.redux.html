@@ -14,4 +14,262 @@
         </div>
     </section>
 
+    <section class="slide">
+
+        <div class="col-6">
+            <div class="content">
+                <h2 class="sub-head">Redux</h2>
+                <h1>C'est quoi ?</h1>
+                <ul>
+                    <li>Anti-MVC</li>
+                    <li class="fragment"
+                        data-fragment-index="3">"Juste" une architecture</li>
+                </ul>
+                <blockquote class="fragment"
+                    data-fragment-index="4">
+                    Redux is a predictable state container for JavaScript apps.
+                    <p class="small">redux.js.org</p>
+                </blockquote>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="content text-center">
+                <div class="fragment current-visible" data-fragment-index="0">
+                    <img class="no-border" src="media/mvc.png" alt="">
+                    <p class="small">(C'est vite le bazar)</p>
+                </div>
+                <div class="fragment current-visible" data-fragment-index="1">
+                    <img class="no-border" src="media/redux.png" alt="">
+                    <p class="small">Data-flow unidirectionnel</p>
+                </div>
+                <div class="fragment current-visible" data-fragment-index="2">
+                    <img class="no-border" src="media/redux.png" alt="">
+                    <img class="no-border u-margin-top"
+                        src="media/redux_example.png" alt="">
+                </div>
+                <div class="fragment current-visible" data-fragment-index="5">
+                    <p>
+                        Une seule source de vérité : <br> le <code>state</code>*
+                    </p>
+                    <p class="small">reducer: (state, action) ⟼ state</p>
+                    <p class="really-small text-right">
+                        * immuable
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="slide">
+
+        <div class="col-6">
+            <div class="content">
+                <h2 class="sub-head">Redux</h2>
+                <h1>Créer les vues</h1>
+
+                <div class="small u-margin-top fragment"
+                    data-fragment-index="1">
+                    <b>Exemple</b>
+                    <div class="js-redux-example1"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 max">
+
+            <div class="content text-center fragment current-visible"
+                data-fragment-index="0">
+                <img class="no-border" src="media/redux_view.png" alt="">
+            </div>
+
+            <div class="content text-center fragment current-visible"
+                data-fragment-index="1">
+                <img class="no-border" src="media/decoupe_redux.png" alt="">
+            </div>
+
+            <pre class="full fragment current-visible" data-fragment-index="2">
+                <code class="full language-jsx">
+/**
+ * @param {Object} props.poney
+    { id: 1, emoji: '🐴', color: 'red',
+        checked: false }
+ * @param {Function} props.toggle
+ */
+const Item = ({ poney, toggle }) =&gt; {
+    const c = poney.get('color');
+    return (&lt;li&gt;
+        &lt;input
+            type="checkbox"
+            defaultChecked={poney.get('checked')}
+            onClick={() =&gt; toggle(poney)} /&gt;
+        &lt;label&gt;
+            { poney.get('emoji') } ({c})
+        &lt;/label&gt;
+    &lt;/li&gt;);
+};
+                </code>
+            </pre>
+
+            <pre class="full fragment current-visible" data-fragment-index="3">
+                <code class="full language-jsx">
+const List = ({ poneys, togglePoney }) =&gt; {
+    const items = poneys.map((p, i) =&gt; (
+        &lt;Item key={i} poney={p}
+            toggle={togglePoney} /&gt;
+    ));
+    return (&lt;div&gt;
+        &lt;p&gt;Famille Poney :&lt;/p&gt;
+        &lt;ul&gt;{ items }&lt;/ul&gt;
+    &lt;/div&gt;;
+};
+                </code>
+            </pre>
+
+            <pre class="full fragment current-visible" data-fragment-index="4">
+                <code class="full language-jsx">
+const Summary = ({ poneys }) =&gt; {
+    const n = poneys.reduce((count, p) =&gt; (
+        p.get('checked') ? count + 1 : count
+    ), 0);
+    return (&lt;p&gt;
+        { n }
+        { n &gt; 1
+            ? 'poneys sélectionnés'
+            : 'poney sélectionné' }
+    &lt;/p&gt;);
+};
+                </code>
+            </pre>
+
+            <pre class="full fragment current-visible" data-fragment-index="5">
+                <code class="full language-jsx">
+const App = (props) => (&lt;div&gt;
+    &lt;List {...props} /&gt;
+    &lt;Summary poneys={props.poneys} /&gt;
+&lt;/div&gt;);
+                </code>
+            </pre>
+
+        </div>
+
+    </section>
+
+    <section class="slide">
+
+        <div class="col-6">
+            <div class="content">
+                <h2 class="sub-head">Redux</h2>
+                <h1>Créer un reducer</h1>
+
+                <div class="small u-margin-top">
+                    <b>Exemple</b>
+                    <div class="js-redux-example1"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 max">
+
+            <div class="content text-center fragment current-visible"
+                data-fragment-index="0">
+                <img class="no-border" src="media/redux_reducer_store.png" alt="">
+                <p>Reducer: (state, action) ⟼ state</p>
+            </div>
+
+            <div class="content text-center fragment current-visible"
+                data-fragment-index="1">
+                <p>Reducer: (state, action) ⟼ <em>new state</em>*</p>
+                <p class="small">* <code>Immutable.js</code></p>
+            </div>
+
+            <pre class="full fragment current-visible" data-fragment-index="2">
+                <code class="full language-jsx">
+/**
+ * @param  {Object}  state
+ * @param  {Object} action
+ *
+ * @return {Object}         New state
+ */
+const reducer = (state, action) => {
+    switch(action.type) {
+        ...
+        default:
+            return state;
+            break;
+    }
+};
+                </code>
+            </pre>
+
+            <pre class="full fragment current-visible" data-fragment-index="3">
+                <code class="full language-jsx">
+const reducer = (state, action) => {
+    switch(action.type) {
+        case 'INIT':
+            return Immutable.fromJS(action.state);
+            break;
+        default:
+            return state;
+            break;
+    }
+};
+                </code>
+            </pre>
+
+            <pre class="full fragment current-visible" data-fragment-index="4">
+                <code class="full language-jsx">
+import { createStore } from 'redux';
+
+const store = createStore(reducer);
+
+store.dispatch({
+    type:  'INIT',
+    state: {
+        poneys: [{
+            id:      1,
+            emoji:   '🐴',
+            color:   'red',
+            checked: false
+        }, ... ],
+    },
+});
+                </code>
+            </pre>
+
+            <pre class="full fragment current-visible" data-fragment-index="5">
+                <code class="full language-jsx">
+const reducer = (state, action) => {
+    switch(action.type) {
+        ...
+        case 'TOGGLE_PONEY':
+            const poneys = state.get('poneys');
+
+            const poneyIndex = poneys
+                .findIndex((p) =>
+                    p.get('id') === action.poney.get('id')
+                );
+            const checked = poneys
+                .get(poneyIndex).get('checked');
+
+            const poney = poneys
+                .get(poneyIndex)
+                .set('checked', !checked);
+
+            return state.update(
+                'poneys',
+                (poneys) => poneys.set(poneyIndex, poney)
+            );
+            break;
+        ...
+    }
+};
+                </code>
+            </pre>
+
+        </div>
+
+    </section>
+
 </section>
