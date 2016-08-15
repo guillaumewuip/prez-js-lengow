@@ -9,7 +9,7 @@
         <div class="content">
             <h1>
                 <span class="small fade-white">2.</span>
-                React & Redux
+                React
             </h1>
             <p class="fragment small text-right u-margin-top">Eh bah enfin !</p>
         </div>
@@ -75,10 +75,10 @@
         </div>
 
         <div class="col-6">
-            <pre class="full">
 
-                <code class="fragment current-visible full language-jsx"
-                    data-fragment-index="0">
+            <pre class="full fragment current-visible"
+                data-fragment-index="0">
+                <code class="full language-jsx">
 class Example2_1 extends React.Component {
     render() {
         return (
@@ -92,9 +92,10 @@ ReactDOM.render(
     document.querySelector('.js-react-example2-1')
 );
                 </code>
-                <code class="full language-jsx fragment current-visible"
-                    data-fragment-index="1">
-
+            </pre>
+            <pre class="full fragment current-visible"
+                data-fragment-index="1">
+                <code class="full language-jsx">
 const Example2_2 = () => (
     &lt;p&gt;Hello world&lt;/p&gt;
 );
@@ -103,7 +104,6 @@ ReactDOM.render(
     &lt;Example2_2 /&gt;,
     document.querySelector('.js-react-example2-2')
 );
-
                 </code>
             </pre>
         </div>
@@ -136,10 +136,10 @@ ReactDOM.render(
         </div>
 
         <div class="col-6 max">
-            <pre class="full">
 
-                <code class="fragment current-visible full language-jsx"
-                    data-fragment-index="0">
+            <pre class="full fragment current-visible"
+                data-fragment-index="0">
+                <code class="full language-jsx">
 class Example3_1 extends React.Component {
     render() {
         return (
@@ -153,24 +153,31 @@ ReactDOM.render(
     document.querySelector('.js-react-example3-1')
 );
                 </code>
-                <code class="full language-jsx fragment current-visible"
-                    data-fragment-index="1">
-
+            </pre>
+            <pre class="full fragment current-visible"
+                data-fragment-index="1" data-line="3,8">
+                <code class="full language-jsx">
 const Example3_2 = (props) => (
     &lt;p&gt;{props.text}&lt;/p&gt;
 );
 
 ReactDOM.render(
-    &lt;Example3_2 text="Petit poney" /&gt;,
+    &lt;Example3_2
+        text="Petit poney"
+        /&gt;,
     document.querySelector('.js-react-example3-2')
 );
 
                 </code>
-                <code class="full language-jsx fragment current-visible"
-                    data-fragment-index="2">
-
+            </pre>
+            <pre class="full fragment current-visible"
+                data-fragment-index="2" data-line="4,12">
+                <code class="full language-jsx">
 const Example3_2 = (props) => (
-    &lt;p onClick={props.coucou}&gt;{props.text}&lt;/p&gt;
+    &lt;p
+        onClick={props.coucou}&gt;
+        {props.text}
+        &lt;/p&gt;
 );
 
 ReactDOM.render(
@@ -204,10 +211,10 @@ ReactDOM.render(
         </div>
 
         <div class="col-6">
-            <pre class="full">
 
-                <code class="fragment current-visible full language-jsx"
-                    data-fragment-index="0">
+            <pre class="full fragment current-visible"
+                data-fragment-index="0">
+                <code class="full language-jsx">
 
 const Item = (props) => (
     &lt;li&gt;{props.emoji}&lt;/li&gt;
@@ -229,9 +236,11 @@ ReactDOM.render(
     document.querySelector('.js-react-example4-1')
 );
                 </code>
+            </pre>
 
-                <code class="fragment current-visible full language-jsx"
-                    data-fragment-index="2">
+            <pre class="full fragment current-visible"
+                data-fragment-index="2">
+                <code class="full language-jsx">
 
 const List = (props) => {
     var poneys = props.poneys.map((p, i) => (
@@ -250,8 +259,8 @@ ReactDOM.render(
     document.querySelector('.js-react-example4-1')
 );
                 </code>
-
             </pre>
+
         </div>
 
         <div class="over-all fragment current-visible"
@@ -281,10 +290,10 @@ ReactDOM.render(
         </div>
 
         <div class="col-6">
-            <pre class="full">
 
-                <code class="fragment current-visible full language-jsx"
-                    data-fragment-index="0">
+            <pre class="full fragment current-visible"
+                data-fragment-index="0">
+                <code class="full language-jsx">
 
 const Item = ({ poney }) => (
     &lt;li&gt;{poney.emoji} ({poney.color})&lt;/li&gt;
@@ -307,9 +316,11 @@ ReactDOM.render(
     document.querySelector('.js-react-example5-1')
 );
                 </code>
+            </pre>
 
-                <code class="fragment current-visible full language-jsx"
-                    data-fragment-index="1">
+            <pre class="full fragment current-visible"
+                data-fragment-index="1">
+                <code class="full language-jsx">
 
 const FilterBar = ({ filter }) => (
     &lt;div&gt;
@@ -328,9 +339,11 @@ const FilterBar = ({ filter }) => (
     &lt;/div&gt;
 );
                 </code>
+            </pre>
 
-                <code class="fragment current-visible full language-jsx"
-                    data-fragment-index="2">
+            <pre class="full fragment current-visible"
+                data-fragment-index="2">
+                <code class="full language-jsx">
 class List extends React.component {
     constructor() {
         super();
@@ -343,9 +356,11 @@ class List extends React.component {
     }
     ...
                 </code>
+            </pre>
 
-                <code class="fragment current-visible full language-jsx"
-                    data-fragment-index="3">
+            <pre class="full fragment current-visible"
+                data-fragment-index="3">
+                <code class="full language-jsx">
     ...
     render() {
         var poneys = this.props.poneys
@@ -367,7 +382,6 @@ class List extends React.component {
     }
 };
                 </code>
-
             </pre>
         </div>
 

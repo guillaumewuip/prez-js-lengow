@@ -78,9 +78,9 @@
                 </div>
             </div>
 
-            <pre class="full fragment fade-out" data-fragment-index="10">
-                <code class="full fragment current-visible language-js"
-                    data-fragment-index="0">
+            <pre class="full fragment current-visible"
+                data-fragment-index="0">
+                <code class="full language-js">
 'use strict';
 
 //ES5
@@ -91,8 +91,10 @@
 //ES6
 [1, 2, 3].map((i) => i * 2); // [2, 4, 6]
                 </code>
-                <code class="full fragment current-visible language-js mark-this"
-                    data-fragment-index="1">
+            </pre>
+            <pre class="full fragment current-visible"
+                data-fragment-index="1" data-line="9,13">
+                <code class="full language-js">
 'use strict';
 
 //ES6
@@ -110,8 +112,10 @@ const MyConstructor = function () {
 
 MyConstructor(); // [3, 6, 9];
                 </code>
-                <code class="full fragment current-visible language-js"
-                    data-fragment-index="2">
+            </pre>
+            <pre class="full fragment current-visible"
+                data-fragment-index="2">
+                <code class="full language-js">
 'use strict';
 
 //ES5
@@ -126,8 +130,10 @@ for (const i = 0; i <= 21; i++) {
 }
 console.log(j); //ReferenceError: j is not defined 👍
                 </code>
-                <code class="full fragment current-visible language-js"
-                    data-fragment-index="3">
+            </pre>
+            <pre class="full fragment current-visible "
+                data-fragment-index="3">
+                <code class="full language-js">
 'use strict';
 
 //ES6
@@ -135,8 +141,10 @@ const a = 1234;
 a = 5678;
 //TypeError: Assignment to constant variable
                 </code>
-                <code class="full fragment current-visible language-js"
-                    data-fragment-index="4">
+            </pre>
+            <pre class="full fragment current-visible "
+                data-fragment-index="4">
+                <code class="full language-js">
 'use strict';
 
 //ES5
@@ -152,8 +160,10 @@ add(1); // 1
 const add = (a, b = 0) => a + b;
 add(1); // 1
                 </code>
-                <code class="full fragment current-visible language-js"
-                    data-fragment-index="5">
+            </pre>
+            <pre class="full fragment current-visible "
+                data-fragment-index="5">
+                <code class="full language-js">
 'use strict';
 
 //ES5
@@ -169,8 +179,10 @@ Comment tu vas ?`;
 // Salut Toto
 // Comment tu vas ?
                 </code>
-                <code class="full fragment current-visible language-js"
-                    data-fragment-index="6">
+            </pre>
+            <pre class="full fragment current-visible"
+                data-fragment-index="6">
+                <code class="full language-js">
 'use strict';
 
 //ES5
@@ -191,8 +203,10 @@ doSomething()
     .then(() => console.log('done'))
     .catch((err) => console.log(err));
                 </code>
-                <code class="full fragment current-visible language-js"
-                    data-fragment-index="7">
+            </pre>
+            <pre class="full fragment current-visible"
+                data-fragment-index="7">
+                <code class="full language-js">
 'use strict';
 
 const doSomethingAsync = (something) => {
@@ -211,15 +225,19 @@ doSomethingAsync('toto')
     .then((result) => console.log(result))
     .catch((err) => console.log(err));
                 </code>
-                <code class="full fragment current-visible language-js"
-                    data-fragment-index="8">
+            </pre>
+            <pre class="full fragment current-visible"
+                data-fragment-index="8">
+                <code class="full language-js">
 'use strict';
 
 fetch('http://my-api.io/poneys')
     .then(doSomething);
                 </code>
+            </pre>
+            <pre class="full">
                 <code class="full fragment current-visible language-js"
-                    data-fragment-index="9">
+                data-fragment-index="9">
 // ./services/myService.js
 'use strict';
 
@@ -288,10 +306,10 @@ getSomething().then(doSomething);
         </div>
 
         <div class="col-6 max">
-            <pre class="full">
 
-                <code class="full fragment current-visible language-js"
-                    data-fragment-index="0">
+            <pre class="full fragment current-visible"
+                data-fragment-index="0" data-line="13,21">
+                <code class="full language-js">
 'use strict';
 
 const $form = $('.js-my-form'),
@@ -314,9 +332,11 @@ const checkAndSubmit = ($form, $cgu) => {
 checkAndSubmit($form, $cgu);
 
                 </code>
+            </pre>
 
-                <code class="full fragment current-visible language-js"
-                    data-fragment-index="1">
+            <pre class="full fragment current-visible"
+                data-fragment-index="1">
+                <code class="full language-js">
 'use strict';
 
 const petitsPoneys = [ ... ];
@@ -337,9 +357,11 @@ const famillePoney = grandsPoneys.reduce(
 ); // 'Famille : 🐴 🐎 🏇
 
                 </code>
+            </pre>
 
-                <code class="full fragment current-visible language-js"
-                    data-fragment-index="2">
+            <pre class="full fragment current-visible"
+                data-fragment-index="2">
+                <code class="full language-js">
 'use strict';
 
 //BTW, don't use the for loop
@@ -356,14 +378,18 @@ for (const i = 0; i < poneys.length; i++) {
 poneys.forEach(doSomething);
 
                 </code>
+            </pre>
 
-                <code class="full fragment current-visible language-js"
-                    data-fragment-index="3">
+            <pre class="full fragment current-visible "
+                data-fragment-index="3">
+                <code class="full language-js">
 'use strict';
 
-const buildColorFilter = (color) => (poney) => {
-    return poney.color === color;
-};
+const buildColorFilter = (color) =>
+    (poney) => {
+        return poney.color === color;
+    }
+;
 
 const
     filterRouge = buildColorFilter('red'),
@@ -374,8 +400,8 @@ const
     poneysBleus  = poneys.filter(filterBleu);
 
                 </code>
-
             </pre>
+
         </div>
 
     </section>
@@ -401,6 +427,5 @@ const
         </div>
 
     </section>
-
 
 </section>
