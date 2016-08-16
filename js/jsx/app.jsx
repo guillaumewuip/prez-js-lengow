@@ -208,15 +208,16 @@ const state = {
  */
 const ItemRedux = ({ poney, toggle }) => {
     const c = poney.get('color');
+    const random = Math.floor(Math.random() * 100000000);
     return (
         <li className="mod-no-style">
             <input
                 type="checkbox"
-                id={`check-${poney.get('id')}`}
+                id={random}
                 defaultChecked={poney.get('checked')}
                 onClick={() => toggle(poney)} />
-            <label htmlFor={`check-${poney.get('id')}`}>
-                {poney.get('emoji')} (<span style={{ color: c }}>{c}</span>)
+            <label htmlFor={random}>
+                {poney.get('emoji')}
             </label>
         </li>
     );
@@ -270,18 +271,13 @@ const reducer = (state, action) => {
 
             const poneyIndex = state
                 .get('poneys')
-                .findIndex((p) => p.get('id') === action.poney.get('id')),
-                checked = state.get('poneys').get(poneyIndex).get('checked');
+                .findIndex((p) => p.get('id') === action.poney.get('id'));
 
-            const poney = state.get('poneys')
-                .get(poneyIndex)
-                .set('checked', !checked);
-
-            return state.update(
-                'poneys',
-                (poneys) => poneys.set(poneyIndex, poney)
+            return state.setIn(
+                ['poneys', poneyIndex, 'checked'],
+                !action.poney.checked
             );
-            break;
+                break;
         default:
             break;
     }

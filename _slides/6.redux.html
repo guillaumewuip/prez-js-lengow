@@ -98,14 +98,13 @@
  * @param {Function} props.toggle
  */
 const Item = ({ poney, toggle }) =&gt; {
-    const c = poney.get('color');
     return (&lt;li&gt;
         &lt;input
             type="checkbox"
             defaultChecked={poney.get('checked')}
             onClick={() =&gt; toggle(poney)} /&gt;
         &lt;label&gt;
-            { poney.get('emoji') } ({c})
+            { poney.get('emoji') }
         &lt;/label&gt;
     &lt;/li&gt;);
 };
@@ -161,6 +160,39 @@ const App = (props) => (&lt;div&gt;
         <div class="col-6">
             <div class="content">
                 <h2 class="sub-head">Redux</h2>
+                <h1>Créer les actions</h1>
+
+                <div class="small u-margin-top">
+                    <b>Exemple</b>
+                    <div class="js-redux-example1"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 max">
+
+            <div class="fragment current-visible" data-fragment-index="0">
+                <img class="no-border" src="media/redux_action.png" alt="">
+            </div>
+
+            <pre class="full fragment current-visible" data-fragment-index="1">
+                <code class="full language-jsx">
+const togglePoney = (poney) => {
+    return {
+        type: 'TOGGLE_PONEY',
+        poney,
+    };
+};
+                </code>
+            </pre>
+        </div>
+
+    </section>
+
+    <section class="slide">
+
+        <div class="col-6">
+            <div class="content">
+                <h2 class="sub-head">Redux</h2>
                 <h1>Créer un reducer</h1>
 
                 <div class="small u-margin-top">
@@ -174,7 +206,7 @@ const App = (props) => (&lt;div&gt;
 
             <div class="content text-center fragment current-visible"
                 data-fragment-index="0">
-                <img class="no-border" src="media/redux_reducer_store.png" alt="">
+                <img class="no-border" src="media/redux_reducer.png" alt="">
                 <p>Reducer: (state, action) ⟼ state</p>
             </div>
 
@@ -186,13 +218,15 @@ const App = (props) => (&lt;div&gt;
 
             <pre class="full fragment current-visible" data-fragment-index="2">
                 <code class="full language-jsx">
+import { Map } from 'immutable';
+
 /**
  * @param  {Object}  state
  * @param  {Object} action
  *
  * @return {Object}         New state
  */
-const reducer = (state, action) => {
+const reducer = (state = Map(), action) => {
     switch(action.type) {
         ...
         default:
@@ -205,10 +239,12 @@ const reducer = (state, action) => {
 
             <pre class="full fragment current-visible" data-fragment-index="3">
                 <code class="full language-jsx">
-const reducer = (state, action) => {
+import { Map, fromJS } from 'immutable';
+
+const reducer = (state = Map(), action) => {
     switch(action.type) {
         case 'INIT':
-            return Immutable.fromJS(action.state);
+            return fromJS(action.state);
             break;
         default:
             return state;
@@ -219,6 +255,54 @@ const reducer = (state, action) => {
             </pre>
 
             <pre class="full fragment current-visible" data-fragment-index="4">
+                <code class="full language-jsx">
+import { Map, fromJS } from 'immutable';
+
+const reducer = (state = Map(), action) => {
+    switch(action.type) {
+        ...
+        case 'TOGGLE_PONEY':
+            const poneyIndex = state
+                .get('poneys')
+                .findIndex((p) =>
+                    p.get('id') === action.poney.get('id')
+                );
+
+            return state.setIn(
+                ['poneys', poneyIndex, 'checked'],
+                !action.poney.checked
+            );
+            break;
+        ...
+    }
+};
+                </code>
+            </pre>
+        </div>
+
+    </section>
+
+    <section class="slide">
+
+        <div class="col-6">
+            <div class="content">
+                <h2 class="sub-head">Redux</h2>
+                <h1>Créer le store</h1>
+
+                <div class="small u-margin-top">
+                    <b>Exemple</b>
+                    <div class="js-redux-example2"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 max">
+
+            <div class="content text-center fragment current-visible"
+                data-fragment-index="0">
+                <img class="no-border" src="media/redux_store.png" alt="">
+            </div>
+
+            <pre class="full fragment current-visible" data-fragment-index="1">
                 <code class="full language-jsx">
 import { createStore } from 'redux';
 
@@ -238,38 +322,59 @@ store.dispatch({
                 </code>
             </pre>
 
-            <pre class="full fragment current-visible" data-fragment-index="5">
+            <div class="fragment current-visible" data-fragment-index="2">
+                <p class="text-center"><b>2 types de composants</b></p>
+                <table class="medium">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td>Présentation</td>
+                            <td>Container</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Pourquoi ?</td>
+                            <td>Vue</td>
+                            <td>Logique</td>
+                        </tr>
+                        <tr>
+                            <td>Redux ?</td>
+                            <td>Non</td>
+                            <td>Oui</td>
+                        </tr>
+                        <tr>
+                            <td>Data</td>
+                            <td>props</td>
+                            <td>Redux state</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <pre class="full fragment current-visible" data-fragment-index="3">
                 <code class="full language-jsx">
-const reducer = (state, action) => {
-    switch(action.type) {
-        ...
-        case 'TOGGLE_PONEY':
-            const poneys = state.get('poneys');
+import { connect, Provider } from 'react-redux';
 
-            const poneyIndex = poneys
-                .findIndex((p) =>
-                    p.get('id') === action.poney.get('id')
-                );
-            const checked = poneys
-                .get(poneyIndex).get('checked');
+const mapStateToProps = (state) => ({
+    poneys: state.get('poneys'),
+});
 
-            const poney = poneys
-                .get(poneyIndex)
-                .set('checked', !checked);
+const AppContainer = connect(
+    mapStateToProps, //map store et props
+    { togglePoney }  //map actions et props, TODO
+)(App);
 
-            return state.update(
-                'poneys',
-                (poneys) => poneys.set(poneyIndex, poney)
-            );
-            break;
-        ...
-    }
-};
+ReactDOM.render(
+    &lt;Provider store={store}&gt;
+        &lt;AppContainer /&gt;
+    &lt;/Provider&gt;,
+    document.querySelector('.js-redux-example2')
+);
                 </code>
             </pre>
 
         </div>
-
-    </section>
+    <section>
 
 </section>

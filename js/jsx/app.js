@@ -1,7 +1,5 @@
 'use strict';
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -338,27 +336,21 @@ var ItemRedux = function ItemRedux(_ref2) {
     var toggle = _ref2.toggle;
 
     var c = poney.get('color');
+    var random = Math.floor(Math.random() * 100000000);
     return React.createElement(
         'li',
         { className: 'mod-no-style' },
         React.createElement('input', {
             type: 'checkbox',
-            id: 'check-' + poney.get('id'),
+            id: random,
             defaultChecked: poney.get('checked'),
             onClick: function onClick() {
                 return toggle(poney);
             } }),
         React.createElement(
             'label',
-            { htmlFor: 'check-' + poney.get('id') },
-            poney.get('emoji'),
-            ' (',
-            React.createElement(
-                'span',
-                { style: { color: c } },
-                c
-            ),
-            ')'
+            { htmlFor: random },
+            poney.get('emoji')
         )
     );
 };
@@ -422,34 +414,21 @@ var togglePoney = function togglePoney(poney) {
 };
 
 var reducer = function reducer(state, action) {
-    var _ret = function () {
-        switch (action.type) {
-            case 'INIT':
-                return {
-                    v: Immutable.fromJS(action.state)
-                };
-                break;
-            case 'TOGGLE_PONEY':
+    switch (action.type) {
+        case 'INIT':
+            return Immutable.fromJS(action.state);
+            break;
+        case 'TOGGLE_PONEY':
 
-                var poneyIndex = state.get('poneys').findIndex(function (p) {
-                    return p.get('id') === action.poney.get('id');
-                }),
-                    checked = state.get('poneys').get(poneyIndex).get('checked');
+            var poneyIndex = state.get('poneys').findIndex(function (p) {
+                return p.get('id') === action.poney.get('id');
+            });
 
-                var poney = state.get('poneys').get(poneyIndex).set('checked', !checked);
-
-                return {
-                    v: state.update('poneys', function (poneys) {
-                        return poneys.set(poneyIndex, poney);
-                    })
-                };
-                break;
-            default:
-                break;
-        }
-    }();
-
-    if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+            return state.setIn(['poneys', poneyIndex, 'checked'], !action.poney.checked);
+            break;
+        default:
+            break;
+    }
 };
 
 var store = Redux.createStore(reducer);
