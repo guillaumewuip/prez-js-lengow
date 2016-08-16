@@ -268,16 +268,16 @@ const reducer = (state, action) => {
             return Immutable.fromJS(action.state);
             break;
         case 'TOGGLE_PONEY':
-
             const poneyIndex = state
                 .get('poneys')
                 .findIndex((p) => p.get('id') === action.poney.get('id'));
 
-            return state.setIn(
+            const newState = state.setIn(
                 ['poneys', poneyIndex, 'checked'],
-                !action.poney.checked
+                !action.poney.get('checked')
             );
-                break;
+            return newState;
+            break;
         default:
             break;
     }
