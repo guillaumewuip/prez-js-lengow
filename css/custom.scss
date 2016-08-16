@@ -217,6 +217,16 @@ input {
         padding: .5em;
     }
 
+.reveal a.mod-no-style {
+    color: $mainColor;
+    text-decoration: none;
+    border-bottom: 2px solid hsla(0, 0%, 0%, 0.1);
+
+    &:hover {
+        color: $customColor;
+    }
+}
+
 .over-all {
     position: absolute;
     top: 0;

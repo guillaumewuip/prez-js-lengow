@@ -35,11 +35,16 @@
             width: 100%;
         }
         .reveal .slides .slide .content {
-            padding: 8vw 6vh;
+            padding: 6vh 4vw;
         }
 
 
-    .reveal.overview .backgrounds .past,
-    .reveal.overview .backgrounds .future {
-        /*display: none !important;*/
+.reveal .first-slide {
+    align-content: center;
+}
+
+    .reveal .first-slide-footer {
+        align-content: center;
+        padding: 0 4vw;
+        width: 100%;
     }
