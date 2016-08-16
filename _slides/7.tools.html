@@ -1,0 +1,99 @@
+---
+# Tools
+---
+
+<section class="slide">
+
+    <section class="slide text-center"
+        data-background-color="hsl(222, 67%, 58%)">
+        <div class="content">
+            <h1>
+                <span class="small fade-white">4.</span>
+                Architecture et Outils
+            </h1>
+            <p><em>ie. gérons tout ça comme des pros</em></p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="col-6">
+            <div class="content">
+                <h1>Architecture</h1>
+
+                <p>À garder en tête :</p>
+                <ul>
+                    <li><em>Separation of concern*</em></li>
+                    <li>Module ES6</li>
+                </ul>
+
+                <p class="really-small text-right">
+                    * <a href="http://fr.slideshare.net/FGRibreau/development-principles-philosophy">
+                    Talk de @FGRibreau
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <pre class="full fragment current-visible"
+                data-fragment-index="0">
+                <code class="full language-markup">
+.
+├── sass/
+├── js/
+|   ├── utils/
+|   ├── components/
+|   |   ├── App.jsx
+|   |   ├── Graph.jsx
+|   |   ├── Box.jsx
+|   |   └── Button.jsx
+|   ├── services/
+|   |   ├── Stats.js
+|   |   └── Auth.js
+|   ├── actions/
+|   |   ├── graph_actions.js
+|   |   └── button_actions.js
+|   ├── reducer.js
+|   └── index.js
+└── index.html
+
+                </code>
+            </pre>
+        </div>
+
+    </section>
+
+    <section class="slide">
+        <div class="col-6">
+            <div class="content">
+                <h1>Lint</h1>
+
+                <p>Inspectons tout ça !</p>
+
+                <ul>
+                    <li>
+                        JShint, <span class="fragment highlight-blue"
+                        data-fragment-index="0">ESLint</span>
+                    </li>
+
+                    <li><a href="https://github.com/airbnb/javascript">
+                        github.com/airbnb/javascript</a>
+                    </li>
+                </ul>
+
+                <p>Moins de bugs, dev plus facile, consitance du code, etc. 👍
+                </p>
+            </div>
+        </div>
+
+        <div class="col-6">
+
+            <pre class="full fragment current-visible"
+                data-fragment-index="1">
+                <code class="full language-json">
+                </code>
+            </pre>
+
+        </div
+
+</section>
