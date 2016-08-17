@@ -16,3 +16,4 @@ _site
 .jekyll-metadata
 Gemfile.lock
 css/theme/*.css
+demo/build
