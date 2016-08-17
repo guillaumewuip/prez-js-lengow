@@ -50,19 +50,10 @@
                     <li class="fragment" data-fragment-index="2">
                         <code>const</code>, <code>let</code>
                     </li>
-                    <li class="fragment" data-fragment-index="4">
-                        Default params
-                    </li>
-                    <li class="fragment" data-fragment-index="5">
-                        Template de chaîne
-                    </li>
-                    <li class="fragment" data-fragment-index="6">
+                    <li class="fragment" data-fragment-index="3">
                         Promise
                     </li>
-                    <li class="fragment" data-fragment-index="8">
-                        <code>fetch()</code>
-                    </li>
-                    <li class="fragment" data-fragment-index="9">
+                    <li class="fragment" data-fragment-index="6">
                         modules et <code>class</code>
                     </li>
                 </ul>
@@ -142,46 +133,8 @@ a = 5678;
 //TypeError: Assignment to constant variable
                 </code>
             </pre>
-            <pre class="full fragment current-visible "
-                data-fragment-index="4">
-                <code class="full language-js">
-'use strict';
-
-//ES5
-var add = function (a, b) {
-    if (arguments.length === 1) {
-        b = 0; //default
-    }
-    return a + b;
-};
-add(1); // 1
-
-//ES6
-const add = (a, b = 0) => a + b;
-add(1); // 1
-                </code>
-            </pre>
-            <pre class="full fragment current-visible "
-                data-fragment-index="5">
-                <code class="full language-js">
-'use strict';
-
-//ES5
-var name = 'Toto';
-var text = 'Salut ' + name + '\n Comment tu vas ?';
-// Salut Toto
-// Comment tu vas ?
-
-//ES6
-const name = 'Toto';
-const text = `Salut ${name}
-Comment tu vas ?`;
-// Salut Toto
-// Comment tu vas ?
-                </code>
-            </pre>
             <pre class="full fragment current-visible"
-                data-fragment-index="6">
+                data-fragment-index="4">
                 <code class="full language-js">
 'use strict';
 
@@ -205,7 +158,7 @@ doSomething()
                 </code>
             </pre>
             <pre class="full fragment current-visible"
-                data-fragment-index="7">
+                data-fragment-index="5">
                 <code class="full language-js">
 'use strict';
 
@@ -226,18 +179,10 @@ doSomethingAsync('toto')
     .catch((err) => console.log(err));
                 </code>
             </pre>
-            <pre class="full fragment current-visible"
-                data-fragment-index="8">
-                <code class="full language-js">
-'use strict';
 
-fetch('http://my-api.io/poneys')
-    .then(doSomething);
-                </code>
-            </pre>
             <pre class="full">
                 <code class="full fragment current-visible language-js"
-                data-fragment-index="9">
+                data-fragment-index="6">
 // ./services/myService.js
 'use strict';
 
