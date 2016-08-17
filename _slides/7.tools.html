@@ -9,7 +9,7 @@
         <div class="content">
             <h1>
                 <span class="small fade-white">4.</span>
-                Architecture et Outils
+                Outils et Méthodo
             </h1>
             <p><em>ie. gérons tout ça comme des pros</em></p>
         </div>
@@ -53,10 +53,35 @@
 |   ├── actions/
 |   |   ├── graph_actions.js
 |   |   └── button_actions.js
+|   ├── test/
+|   |   ├── Stats.js
+|   |   └── App.jsx
 |   ├── reducer.js
 |   └── index.js
 └── index.html
-
+                </code>
+            </pre>
+            <pre class="full fragment current-visible"
+                data-fragment-index="1">
+                <code class="full language-markup">
+.
+├── sass/
+├── js/
+|   ├── stats/
+|   |   ├── components/
+|   |   ├── services/
+|   |   ├── actions/
+|   |   ├── test/
+|   |   ├── reducer.js
+|   |   └── index.js
+|   ├── catalog/
+|   |   ├── components/
+|   |   ├── services/
+|   |   ├── actions/
+|   |   ├── test/
+|   |   ├── reducer.js
+|   |   └── index.js
+└── index.html
                 </code>
             </pre>
         </div>
@@ -91,9 +116,236 @@
             <pre class="full fragment current-visible"
                 data-fragment-index="1">
                 <code class="full language-json">
+// .eslintrc.json
+{
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "extends": "airbnb",
+    "rules": {
+        "semi":   ["error", "always"],
+        "quotes": ["error", "simple"],
+        ...
+    }
+}
                 </code>
             </pre>
 
-        </div
+            <div class="content text-center fragment current-visible"
+                data-fragment-index="2">
+                <img src="media/eslint.png" alt="">
+                <p class="small">
+                    (ESLint branché sur un <code>gulp watch</code>)
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="slide">
+        <div class="col-6">
+            <div class="content">
+                <h1>Tests</h1>
+                <ul>
+                    <li class="fragment" data-fragment-index="1">
+                        Mocha
+                    </li>
+                    <li class="fragment" data-fragment-index="2">
+                        Chai
+                    </li>
+                    <li class="fragment" data-fragment-index="4">
+                        Enzyme
+                    </li>
+                </ul>
+                <p class="fragment" data-fragment-index="7">
+                    TDD 🤓
+                </p>
+            </div>
+        </div>
+
+        <div class="col-6 max">
+
+            <div class="content text-center fragment current-visible"
+                data-fragment-index="0">
+                <img src="media/test.jpg" alt="">
+            </div>
+
+            <pre class="full fragment current-visible"
+                data-fragment-index="1">
+                <code class="full language-js">
+import reducer from '../reducer';
+
+describe('reducer', () => {
+
+    it('handles INIT', () => {
+        ...
+    });
+
+    it('handles TOGGLE_PONEY', () => {
+        ...
+    });
+
+});
+                </code>
+            </pre>
+
+            <pre class="full fragment current-visible"
+                data-fragment-index="2">
+                <code class="full language-js">
+import { expect } from 'chai';
+import Api from '../services/api';
+
+describe('API service', () => {
+
+    //if synchronous
+    it('returns 2 with returns2()', () => {
+        expect(Api.returns2()).to.equal(2);
+    });
+
+});
+                </code>
+            </pre>
+
+            <pre class="full fragment current-visible"
+                data-fragment-index="3">
+                <code class="full language-js">
+import { expect } from 'chai';
+import Api from '../services/api';
+
+//mock with fetch-mock here
+
+const poneys = [{ emoji: '🐴', color: 'red' }, ... ];
+
+describe('API service', () => {
+
+    it(
+        'returns poneys with getPoneys()',
+        function (done) {
+            Api.getPoneys()
+                .then((result) => {
+                    expect(result).to.deep.equal(poneys)
+                    done();
+                })
+                .catch(done);
+        }
+    );
+
+});
+                </code>
+            </pre>
+
+            <pre class="full fragment current-visible"
+                data-fragment-index="4">
+                <code class="full language-jsx">
+import React from 'react';
+import { expect } from 'chai';
+import { shallow, render } from 'enzyme';
+
+import Item from '../components/Item';
+
+describe('Item', () => {
+
+    it('renders an item', () => {
+        const TEXT = 'Poney';
+        const wrapper = shallow(
+            &lt;TodoItem text={TEXT} /&gt;
+        );
+
+        expect(wrapper.find('li')).to.have.length(1);
+        expect(wrapper.find('label').text()).to.equal(TEXT);
+    });
+
+});
+                </code>
+            </pre>
+
+            <pre class="full fragment current-visible"
+                data-fragment-index="5">
+                <code class="full language-jsx">
+import React from 'react';
+import { expect } from 'chai';
+import { shallow, render } from 'enzyme';
+
+import Item from '../components/Item';
+
+describe('Item', () => {
+
+    it(
+        'invokes callback when the checkbox is clicked',
+        function (done) {
+            const PONEY = { ... };
+            const checkCb = (poney) => {
+                expect(poney).to.equal(PONEY)
+                done();
+            };
+
+            const wrapper = shallow(
+                &lt;Item poney={PONEY} toggleItem={checkCb}/&gt;
+            );
+
+            wrapper.find('input').simulate('click');
+        }
+    );
+
+});
+                </code>
+            </pre>
+
+            <div class="content text-center fragment current-visible"
+                data-fragment-index="6">
+                <img src="media/mocha.png" alt="">
+                <p class="small"><code>mocha</code></p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="slide">
+        <div class="col-6">
+            <div class="content">
+                <h1>Build</h1>
+                <div class="fragment" data-fragment-index="1">
+                    <p><code>Webpack</code></p>
+                    <ul>
+                        <li>Modules</li>
+                        <li>Dépendances</li>
+                        <li>ES6 → préhistoire</li>
+                        <li>Compression</li>
+                        <li>Dev tools</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 max">
+
+            <div class="current text-center fragment current-visible"
+                data-fragment-index="0">
+                <img src="media/build_js.png" alt="">
+            </div>
+
+            <div class="current text-center fragment current-visible"
+                data-fragment-index="1">
+                <img class="no-border" src="media/webpack.png" alt="">
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="slide">
+        <div class="col-6">
+            <div class="content">
+                <h1>Outils et Méthode</h1>
+                //TODO
+            </div>
+        </div>
+
+    </section>
 
 </section>
