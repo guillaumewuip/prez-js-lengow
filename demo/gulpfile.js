@@ -4,6 +4,7 @@ const
     gutil   = require('gutil'),
     path    = require('path'),
     webpack = require('webpack'),
+    exec    = require('child_process').exec,
     eslint  = require('gulp-eslint');
 
 const webpackConfig = {
@@ -36,7 +37,7 @@ const inputPaths = {
 };
 
 /**
- * JS ES6
+ * JS
  */
 
 gulp.task('js:lint', () => {
@@ -57,6 +58,7 @@ gulp.task('js:watch', () => {
     gulp.watch(inputPaths.javascript, [
         'js:lint',
         'js:build',
+        'js:test',
     ]);
 });
 
@@ -73,6 +75,22 @@ gulp.task('js:build', (done) => {
             }));
             done();
         });
+});
+
+gulp.task('js:test', (done) => {
+    const cmd = [
+        'mocha',
+        '--colors',
+        '--reporter list',
+        '--compilers js:babel-core/register',
+        '--require ./test/_setup.js',
+        '\'test/**/*.@(js|jsx)\'',
+    ];
+    exec(cmd.join(' '), (err, stdout, stderr) => {
+        console.log(stdout);
+        console.log(stderr);
+        done(err);
+    });
 });
 
 /**
