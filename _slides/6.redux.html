@@ -121,7 +121,7 @@ const List = ({ poneys, togglePoney }) =&gt; {
     return (&lt;div&gt;
         &lt;p&gt;Famille Poney :&lt;/p&gt;
         &lt;ul&gt;{ items }&lt;/ul&gt;
-    &lt;/div&gt;;
+    &lt;/div&gt;);
 };
                 </code>
             </pre>
@@ -362,7 +362,7 @@ const mapStateToProps = (state) => ({
 
 const AppContainer = connect(
     mapStateToProps, //map store et props
-    { togglePoney }  //map actions et props, TODO
+    { togglePoney }  //map actions et props
 )(App);
 
 ReactDOM.render(
