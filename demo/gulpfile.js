@@ -1,11 +1,12 @@
 
 const
-    gulp    = require('gulp'),
-    gutil   = require('gutil'),
-    path    = require('path'),
-    webpack = require('webpack'),
-    exec    = require('child_process').exec,
-    eslint  = require('gulp-eslint');
+    gulp        = require('gulp'),
+    gutil       = require('gutil'),
+    path        = require('path'),
+    webpack     = require('webpack'),
+    exec        = require('child_process').exec,
+    bs          = require('browser-sync').create(),
+    eslint      = require('gulp-eslint');
 
 const webpackConfig = {
     debug: true,
@@ -35,6 +36,12 @@ const inputPaths = {
         'test/**/*.jsx',
     ],
 };
+
+bs.init({
+    server: {
+        baseDir: './',
+    },
+});
 
 /**
  * JS
@@ -73,6 +80,8 @@ gulp.task('js:build', (done) => {
                 chunks: false,
                 colors: true,
             }));
+
+            bs.reload();
             done();
         });
 });
