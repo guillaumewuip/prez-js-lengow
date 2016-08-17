@@ -17,6 +17,7 @@ collections:
 
 exclude:
 - node_modules
+- demo
 
 sass:
     sass_dir: css/
