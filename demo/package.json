@@ -4,7 +4,8 @@
   "description": "Demo of React for Lengow",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": " mocha --reporter list --compilers js:babel-core/register --require ./test/_setup.js 'test/**/*.@(js|jsx)'",
+    "coverage": "./node_modules/.bin/babel-node ./node_modules/.bin/isparta cover --include '**/*.js*' ./node_modules/.bin/_mocha -- --compilers js:babel-core/register --require ./test/_setup.js 'test/**/*.@(js|jsx)'"
   },
   "author": "Guillaume Wuip <clochard.guillaume@gmail.com>",
   "license": "ISC",
@@ -46,12 +47,14 @@
     "webpack": "^1.13.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.11.4",
     "eslint": "^3.3.1",
     "eslint-config-airbnb": "^10.0.1",
     "eslint-loader": "^1.5.0",
     "eslint-plugin-import": "^1.13.0",
     "eslint-plugin-jsx-a11y": "^2.1.0",
     "eslint-plugin-mocha": "^4.3.0",
-    "eslint-plugin-react": "^6.1.1"
+    "eslint-plugin-react": "^6.1.1",
+    "isparta": "^4.0.0"
   }
 }

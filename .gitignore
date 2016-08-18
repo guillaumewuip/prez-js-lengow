@@ -17,3 +17,5 @@ _site
 Gemfile.lock
 css/theme/*.css
 demo/build
+demo/coverage
+
