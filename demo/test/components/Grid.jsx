@@ -3,22 +3,24 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 
+import { fromJS, List } from 'immutable';
+
 import Grid from '../../js/components/Grid.jsx';
 import Search from '../../js/components/Search.jsx';
-import Catalog from '../../js/components/Catalog.jsx';
+import Product from '../../js/components/Product.jsx';
 import Button from '../../js/components/Button.jsx';
 import Loader from '../../js/components/Loader.jsx';
 
-const catalog = {
+const product = fromJS({
     title: 'title',
     img:   'img',
     price: '10 €',
-};
+});
 
 describe('Grid', () => {
     it('should have a filer bar', () => {
         const wrapper = shallow(
-            <Grid catalogs={[]} />
+            <Grid products={List()} />
         );
 
         expect(wrapper.find('.filters-box')).to.have.length(1);
@@ -27,9 +29,9 @@ describe('Grid', () => {
             .to.have.equal(Search);
     });
 
-    it('should have a catalog container', () => {
+    it('should have a products container', () => {
         const wrapper = shallow(
-            <Grid catalogs={[]} />
+            <Grid products={List()} />
         );
 
         expect(wrapper.find('.catalog-products')).to.have.length(1);
@@ -39,10 +41,10 @@ describe('Grid', () => {
         const NB = 3;
         const
             wrapper1 = shallow(
-                <Grid catalogs={[]} />
+                <Grid products={List()} />
             ),
             wrapper2 = shallow(
-                <Grid catalogs={Array(NB).fill(catalog)} />
+                <Grid products={Array(NB).fill(product)} />
             );
 
         expect(wrapper1.find('.catalog-products').children())
@@ -52,12 +54,12 @@ describe('Grid', () => {
             .to.have.length(3);
 
         expect(wrapper2.find('.catalog-products')
-                .children().first().type()).to.equal(Catalog);
+                .children().first().type()).to.equal(Product);
     });
 
     it('should display message when no catalogs', () => {
         const wrapper = shallow(
-            <Grid catalogs={[]} />
+            <Grid products={List()} />
         );
 
         expect(wrapper.find('.no-content')).to.have.length(1);
@@ -65,15 +67,15 @@ describe('Grid', () => {
 
     it('should display Show more button when there are catalogs', () => {
         const wrapper = shallow(
-            <Grid catalogs={[catalog]} />
+            <Grid products={List([product])} />
         );
 
         expect(wrapper.find(Button)).to.have.length(1);
     });
 
-    it('should display Loader when loading is true', () => {
+    it('should display Loader when fetching is true', () => {
         const wrapper = shallow(
-            <Grid loading catalogs={[catalog]} />
+            <Grid fetching products={List([product])} />
         );
 
         expect(wrapper.find(Loader)).to.have.length(1);

@@ -7,8 +7,9 @@ const
 const
     PORT        = process.env.PORT || 8080,
     IMAGE_DIR   = process.env.IMAGE_DIR || 'img/products',
-    NB_PRODUCTS = 10,
-    MAX_PRICE   = 300;
+    NB_PRODUCTS = 20,
+    MAX_PRICE   = 300,
+    TIMEOUT     = 1000;
 
 const NAMES_PARTS = [
     'JARDIN',
@@ -71,13 +72,24 @@ const buildProducts = (n, images, names, maxPrice) => {
 
 const start = (images) => {
     app.get('/catalog/:id/products', (req, res) => {
-        res.json(buildProducts(NB_PRODUCTS, images, NAMES_PARTS, MAX_PRICE));
+        setTimeout(() => res.json(
+            buildProducts(NB_PRODUCTS, images, NAMES_PARTS, MAX_PRICE)
+        ), TIMEOUT);
     });
 
     app.listen(PORT, () => {
         console.log(`Listenning on port ${PORT}`);
     });
 };
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header(
+        'Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept'
+    );
+    next();
+});
 
 readImages(IMAGE_DIR)
     .then(start)

@@ -1,22 +1,24 @@
 
 import React from 'react';
 
+import { CATALOG } from '../constants.json';
+
 import Button from './Button.jsx';
-import Catalog from './Catalog.jsx';
+import Product from './Product.jsx';
 import Search from './Search.jsx';
 import Loader from './Loader.jsx';
 
-const Grid = ({ loading, catalogs }) => {
-    const items = catalogs.map((c) => (
-        <Catalog
-            key={c.title}
-            title={c.title}
-            img={c.img}
-            price={c.price}
+const Grid = ({ fetching, products, fetchProducts }) => {
+    const items = products.map((c) => (
+        <Product
+            key={`${c.get('title')}${c.get('img')}${c.get('price')}`}
+            title={c.get('title')}
+            img={c.get('img')}
+            price={c.get('price')}
         />
     ));
 
-    const noItems = catalogs.length === 0 ? (
+    const noItems = products.size === 0 ? (
         <div className="col-xs-12">
             <div className="no-content">
                 <div>
@@ -30,36 +32,19 @@ const Grid = ({ loading, catalogs }) => {
         </div>
     ) : '';
 
-    const more = catalogs.length > 0 ? (
-        <div className="col-xs-12">
+    const more = products.size > 0 ? (
+        <div className="col-xs-12 text-center">
             <Button
-                click={() => console.log('TODO')}
+                click={() => fetchProducts(CATALOG)}
             />
         </div>
     ) : '';
 
-    const container = loading
-        ? (
-        <div className="row">
-            <div className="col-xs-12">
-                <Loader text="Loading products..." />
-            </div>
+    const loader = fetching ? (
+        <div className="col-xs-12">
+            <Loader text="Loading products..." />
         </div>
-        )
-        : (
-        <div className="row">
-            <div className="col-xs-12">
-                <div className="catalog-products">
-                    {items}
-                </div>
-            </div>
-
-            {noItems}
-
-            {more}
-        </div>
-        )
-    ;
+    ) : '';
 
     return (
         <div className="container">
@@ -74,7 +59,20 @@ const Grid = ({ loading, catalogs }) => {
                 </div>
             </div>
 
-            {container}
+            <div className="row">
+
+                <div className="col-xs-12">
+                    <div className="catalog-products">
+                        {items}
+                    </div>
+                </div>
+
+                {noItems}
+
+                {loader}
+
+                {more}
+            </div>
         </div>
     );
 };

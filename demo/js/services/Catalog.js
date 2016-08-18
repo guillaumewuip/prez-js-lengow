@@ -1,5 +1,5 @@
 
-import 'isomorphic-fetch';
+import fetch from 'isomorphic-fetch';
 
 const Catalog = (root) => ({
     getProducts(catalog) {

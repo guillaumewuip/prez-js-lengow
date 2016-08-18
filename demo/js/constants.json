@@ -1,3 +1,4 @@
 {
-    "SERVER_ROOT": "http://localhost:8080"
+    "SERVER_ROOT": "http://localhost:8080",
+    "CATALOG": 1
 }

@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const Catalog = ({ title, price, img }) => (
+const Product = ({ title, price, img }) => (
     <div className="catalog-product" title={title}>
         <img
             src={img}
@@ -14,4 +14,4 @@ const Catalog = ({ title, price, img }) => (
     </div>
 );
 
-export default Catalog;
+export default Product;
