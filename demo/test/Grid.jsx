@@ -73,7 +73,7 @@ describe('Grid', () => {
 
     it('should display Loader when loading is true', () => {
         const wrapper = shallow(
-            <Grid loading={true} catalogs={[catalog]} />
+            <Grid loading catalogs={[catalog]} />
         );
 
         expect(wrapper.find(Loader)).to.have.length(1);

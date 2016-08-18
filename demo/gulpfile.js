@@ -29,7 +29,7 @@ const inputPaths = {
     javascript: [
         '.eslintrc.json',
         'gulpfile.js',
-        'index.js',
+        'server.js',
         'js/**/*.js',
         'js/**/*.jsx',
         'test/**/*.js',

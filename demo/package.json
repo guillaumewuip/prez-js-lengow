@@ -24,6 +24,7 @@
     "chai": "^3.5.0",
     "chai-immutable": "^1.6.0",
     "enzyme": "^2.4.1",
+    "express": "^4.14.0",
     "gulp": "^3.9.1",
     "gulp-eslint": "^3.0.1",
     "gulp-mocha": "^3.0.1",
@@ -31,9 +32,9 @@
     "jsdom": "^9.4.2",
     "mocha": "^3.0.2",
     "react": "^15.3.0",
+    "react-addons-test-utils": "^15.3.0",
     "react-dom": "^15.3.0",
-    "webpack": "^1.13.1",
-    "react-addons-test-utils": "^15.3.0"
+    "webpack": "^1.13.1"
   },
   "devDependencies": {
     "eslint": "^3.3.1",
