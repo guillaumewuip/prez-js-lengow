@@ -2,12 +2,13 @@
 const
     fs   = require('fs'),
     path = require('path'),
+    uuid = require('uuid'),
     app  = require('express')();
 
 const
     PORT        = process.env.PORT || 8080,
     IMAGE_DIR   = process.env.IMAGE_DIR || 'img/products',
-    NB_PRODUCTS = 20,
+    NB_PRODUCTS = 200,
     MAX_PRICE   = 300,
     TIMEOUT     = 1000;
 
@@ -55,6 +56,7 @@ const buildProductName = (names) => {
 const buildProduct = (images, names, maxPrice) => {
     const index = random(0, images.length);
     return {
+        id:    uuid.v4(),
         title: buildProductName(names),
         img:   images[index],
         price: `${random(0, maxPrice)} €`,

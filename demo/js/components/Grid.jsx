@@ -11,7 +11,7 @@ import Loader from './Loader.jsx';
 const Grid = ({ fetching, products, fetchProducts }) => {
     const items = products.map((c) => (
         <Product
-            key={`${c.get('title')}${c.get('img')}${c.get('price')}`}
+            key={`${c.get('id')}`}
             title={c.get('title')}
             img={c.get('img')}
             price={c.get('price')}
