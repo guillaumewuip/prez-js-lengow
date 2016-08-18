@@ -1,11 +1,14 @@
 
 const
-    fs  = require('fs'),
-    app = require('express')();
+    fs   = require('fs'),
+    path = require('path'),
+    app  = require('express')();
 
 const
-    PORT      = process.env.PORT || 8080,
-    IMAGE_DIR = process.env.IMAGE_DIR || 'img/products';
+    PORT        = process.env.PORT || 8080,
+    IMAGE_DIR   = process.env.IMAGE_DIR || 'img/products',
+    NB_PRODUCTS = 10,
+    MAX_PRICE   = 300;
 
 const NAMES_PARTS = [
     'JARDIN',
@@ -31,39 +34,54 @@ const readImages = (dir) => new Promise((resolve, reject) => {
         if (err) {
             reject(err);
         } else {
-            resolve(data);
+            resolve(data.map((i) => path.join(dir, i)));
         }
     });
 });
 
-const buildProductName = () => {
+const buildProductName = (names) => {
     const nbWords = random(1, 4);
 
-    const words = Array(nbWords).fill(0).map(() => {
-        const index = random(0, NAMES_PARTS.length);
+    const words = Array.from(Array(nbWords)).map(() => {
+        const index = random(0, names.length);
 
-        return NAMES_PARTS[index];
+        return names[index];
     });
 
     return words.join(' ');
 };
 
-console.log(buildProductName());
+const buildProduct = (images, names, maxPrice) => {
+    const index = random(0, images.length);
+    return {
+        title: buildProductName(names),
+        img:   images[index],
+        price: `${random(0, maxPrice)} €`,
+    };
+};
 
-process.exit();
+const buildProducts = (n, images, names, maxPrice) => {
+    const products = Array.from(Array(n))
+        .map(() => buildProduct(images, names, maxPrice));
+
+    return {
+        products,
+    };
+};
+
+const start = (images) => {
+    app.get('/catalog/:id/products', (req, res) => {
+        res.json(buildProducts(NB_PRODUCTS, images, NAMES_PARTS, MAX_PRICE));
+    });
+
+    app.listen(PORT, () => {
+        console.log(`Listenning on port ${PORT}`);
+    });
+};
 
 readImages(IMAGE_DIR)
-    .then(console.log.bind(console))
+    .then(start)
     .catch((err) => {
         throw new Error(err);
     });
-
-
-app.get('/catalog/:id/products', (req, res) => {
-
-});
-
-app.listen(PORT, () => {
-    console.log(`Listenning on port ${PORT}`);
-});
 
