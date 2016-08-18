@@ -3,7 +3,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 
-import Loader from '../js/components/Loader.jsx';
+import Loader from '../../js/components/Loader.jsx';
 
 describe('Loader', () => {
     const text = 'Loading ...';

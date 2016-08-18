@@ -3,11 +3,11 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 
-import Grid from '../js/components/Grid.jsx';
-import Search from '../js/components/Search.jsx';
-import Catalog from '../js/components/Catalog.jsx';
-import Button from '../js/components/Button.jsx';
-import Loader from '../js/components/Loader.jsx';
+import Grid from '../../js/components/Grid.jsx';
+import Search from '../../js/components/Search.jsx';
+import Catalog from '../../js/components/Catalog.jsx';
+import Button from '../../js/components/Button.jsx';
+import Loader from '../../js/components/Loader.jsx';
 
 const catalog = {
     title: 'title',

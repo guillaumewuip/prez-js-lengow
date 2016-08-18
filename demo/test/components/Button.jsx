@@ -3,7 +3,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 
-import Button from '../js/components/Button.jsx';
+import Button from '../../js/components/Button.jsx';
 
 describe('Button', () => {
     it('should should have a <button>', () => {

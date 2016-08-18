@@ -11,7 +11,7 @@ const
 const webpackConfig = {
     debug:   true,
     devtool: 'source-map',
-    entry:   './js/index.jsx',
+    entry:   ['babel-polyfill', './js/index.jsx'],
     module:  {
         loaders: [{
             test:    /\.jsx?$/,

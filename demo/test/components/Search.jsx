@@ -3,7 +3,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
 
-import Search from '../js/components/Search.jsx';
+import Search from '../../js/components/Search.jsx';
 
 describe('Search', () => {
     const placeholder = 'placeholder';
