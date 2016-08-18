@@ -33,7 +33,7 @@
                     </li>
                     <li>
                         Caractéristiques
-                        <p class="small">Composants, JSX</p>
+                        <p class="small">Composants, JSX, Performance</p>
                     </li>
                     <li><em>De l'HTML dans du JS</em></li>
                 </ul>
@@ -74,7 +74,7 @@
             </div>
         </div>
 
-        <div class="col-6">
+        <div class="col-6 max">
 
             <pre class="full fragment current-visible"
                 data-fragment-index="0">
@@ -362,7 +362,7 @@ class List extends React.component {
         };
     }
     _handleFilter(filter) {
-        this.setState({ filter: filter });
+        this.setState({ filter });
     }
     ...
                 </code>

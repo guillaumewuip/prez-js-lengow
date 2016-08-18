@@ -28,7 +28,8 @@
                 <blockquote class="fragment"
                     data-fragment-index="4">
                     Redux is a predictable state container for JavaScript apps.
-                    <p class="small">redux.js.org</p>
+                    <br>
+                    <span class="small">redux.js.org</span>
                 </blockquote>
             </div>
         </div>
@@ -221,7 +222,7 @@ const togglePoney = (poney) => {
 import { Map } from 'immutable';
 
 /**
- * @param  {Object}  state
+ * @param  {Object} state
  * @param  {Object} action
  *
  * @return {Object}         New state
@@ -314,7 +315,6 @@ store.dispatch({
         poneys: [{
             id:      1,
             emoji:   '🐴',
-            color:   'red',
             checked: false
         }, ... ],
     },
@@ -355,6 +355,9 @@ store.dispatch({
             <pre class="full fragment current-visible" data-fragment-index="3">
                 <code class="full language-jsx">
 import { connect, Provider } from 'react-redux';
+
+import App from './components/App.jsx";
+import togglePoney from './actions";
 
 const mapStateToProps = (state) => ({
     poneys: state.get('poneys'),

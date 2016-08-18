@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <div class="col-6">
+        <div class="col-6 max">
             <pre class="full fragment current-visible"
                 data-fragment-index="0">
                 <code class="full language-markup">
@@ -111,7 +111,7 @@
             </div>
         </div>
 
-        <div class="col-6">
+        <div class="col-6 max">
 
             <pre class="full fragment current-visible"
                 data-fragment-index="1">
@@ -130,7 +130,7 @@
         "semi":   ["error", "always"],
         "quotes": ["error", "simple"],
         ...
-    }
+    },
 }
                 </code>
             </pre>
@@ -243,7 +243,7 @@ describe('API service', () => {
                 <code class="full language-jsx">
 import React from 'react';
 import { expect } from 'chai';
-import { shallow, render } from 'enzyme';
+import { shallow } from 'enzyme';
 
 import Item from '../components/Item';
 
@@ -252,7 +252,7 @@ describe('Item', () => {
     it('renders an item', () => {
         const TEXT = 'Poney';
         const wrapper = shallow(
-            &lt;TodoItem text={TEXT} /&gt;
+            &lt;Item text={TEXT} /&gt;
         );
 
         expect(wrapper.find('li')).to.have.length(1);

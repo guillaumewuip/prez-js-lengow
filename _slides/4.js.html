@@ -50,7 +50,7 @@
                     <li class="fragment" data-fragment-index="2">
                         <code>const</code>, <code>let</code>
                     </li>
-                    <li class="fragment" data-fragment-index="3">
+                    <li class="fragment" data-fragment-index="4">
                         Promise
                     </li>
                     <li class="fragment" data-fragment-index="6">
@@ -110,14 +110,14 @@ MyConstructor(); // [3, 6, 9];
 'use strict';
 
 //ES5
-for (let i = 0; i <= 21; i++) {
+for (var i = 0; i <= 21; i++) {
     var j = i * 2;
 }
 console.log(j); //42 ¯\_(ツ)_/¯
 
 //ES6
-for (const i = 0; i <= 21; i++) {
-    let j = i * 2;
+for (let i = 0; i <= 21; i++) {
+    const j = i * 2;
 }
 console.log(j); //ReferenceError: j is not defined 👍
                 </code>
