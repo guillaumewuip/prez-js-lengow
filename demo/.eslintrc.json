@@ -15,6 +15,12 @@
             }
         }],
         "no-console": 0,
+        "func-names": 0,
+        "prefer-arrow-callback": 0,
+        "key-spacing": [1, {
+            "beforeColon": false ,
+            "align": "value"
+        }],
         "react/prop-types": 0,
         "react/jsx-indent": ["error", 4],
         "react/jsx-indent-props": ["error", 4]

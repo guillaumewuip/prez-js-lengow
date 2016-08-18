@@ -9,18 +9,18 @@ const
     eslint      = require('gulp-eslint');
 
 const webpackConfig = {
-    debug: true,
+    debug:   true,
     devtool: 'source-map',
-    entry: './js/index.jsx',
-    module: {
+    entry:   './js/index.jsx',
+    module:  {
         loaders: [{
-            test: /\.jsx?$/,
+            test:    /\.jsx?$/,
             exclude: /node_modules/,
-            loader: 'babel',
+            loader:  'babel',
         }],
     },
     output: {
-        path: path.join(__dirname, 'build'),
+        path:     path.join(__dirname, 'build'),
         filename: 'bundle.js',
     },
 };
@@ -41,6 +41,7 @@ bs.init({
     server: {
         baseDir: './',
     },
+    open: false,
 });
 
 /**
@@ -98,7 +99,7 @@ gulp.task('js:test', (done) => {
     exec(cmd.join(' '), (err, stdout, stderr) => {
         console.log(stdout);
         console.log(stderr);
-        done(err);
+        done();
     });
 });
 

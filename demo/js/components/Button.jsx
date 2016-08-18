@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-export default ({ click }) => (
+const Button = ({ click }) => (
     <button
         type="button"
         className="button"
@@ -10,3 +10,5 @@ export default ({ click }) => (
         Show more
     </button>
 );
+
+export default Button;
