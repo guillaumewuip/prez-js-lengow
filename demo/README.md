@@ -11,7 +11,7 @@ Testé uniquement avec node 6.4.0.
 - Installer les dépendences `npm install`
 - Lancer le mini serveur `node server.js`
 - Lancer gulp `gulp`
-- Aller sur http://localhost:3000
+- Aller sur [localhost:3000](http://localhost:3000)
 
 # Ce qu'il faut savoir
 
@@ -60,6 +60,16 @@ directement le résultat de webpack.
 Pour lancer les tests à la main et/ou le coverage :
 - `npm run test`
 - `npm run coverage`
+
+```
+=============================== Coverage summary ===============================
+Statements   : 96.2% ( 152/158 ), 4 ignored
+Branches     : 97.26% ( 71/73 ), 18 ignored
+Functions    : 89.47% ( 34/38 ), 1 ignored
+Lines        : 92.31% ( 60/65 )
+================================================================================
+```
+(sans se forcer, pas mal non ?)
 
 ## Commentaires
 
