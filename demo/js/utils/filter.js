@@ -6,9 +6,9 @@
  */
 const filter = (search) => (product) => (
     search === ''
-        || product.get('title').toLowerCase().includes(search)
-        || product.get('price').toLowerCase().includes(search)
-        || product.get('img').toLowerCase().includes(search)
+        || product.get('title').toLowerCase().includes(search.toLowerCase())
+        || product.get('price').toLowerCase().includes(search.toLowerCase())
+        || product.get('img').toLowerCase().includes(search.toLowerCase())
 );
 
 export default filter;
