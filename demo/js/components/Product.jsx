@@ -9,7 +9,7 @@ const Product = ({ title, price, img }) => (
             alt={title}
         />
         <p className="catalog-product-title">
-            {title} <br /> <b>{price} €</b>
+            {title} <br /> <b>{price}</b>
         </p>
     </div>
 );
