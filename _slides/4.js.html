@@ -286,9 +286,7 @@ checkAndSubmit($form, $cgu);
 
 const petitsPoneys = [ ... ];
 
-const grandsPoneys = petitsPoneys.map(
-    (p) => grandir(p)
-);
+const grandsPoneys = petitsPoneys.map(grandir);
 
 const grandsPoneysRouges = grandsPoneys.filter(
     (p) => p.color === 'red'
