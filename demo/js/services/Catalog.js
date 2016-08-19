@@ -3,8 +3,8 @@ import fetch from 'isomorphic-fetch';
 
 const Catalog = (root) => ({
     getProducts(catalog) {
-        return fetch(`${root}/catalog/${catalog}/products`)
-            .then((res) => res.json());
+        return (fetch(`${root}/catalog/${catalog}/products`)
+            .then((res) => res.json()));
     },
 });
 

@@ -28,7 +28,7 @@ Testé uniquement avec node 6.4.0.
 │   ├── utils
 │   │   └── filter.js   # un helper pour filter les produits
 │   ├── actions.js      # les actions Redux
-│   ├── constants.js    # quelques constantes (pas forcément idéalement placées)
+│   ├── constants.json  # quelques constantes (pas forcément idéalement placées)
 │   ├── reducer.js      # le reducer
 │   └── index.js        # entrypoint, création du store et attachement du
 │                       # composant au DOM
@@ -54,6 +54,12 @@ Ce bon vieux `gulp` fait pas mal de choses :
 
 Dans un environnement de prod, bien sûr, on laisserai gulp de côté pour servir
 directement le résultat de webpack.
+
+## Tests & Coverage
+
+Pour lancer les tests à la main et/ou le coverage :
+- `npm run test`
+- `npm run coverage`
 
 ## Commentaires
 

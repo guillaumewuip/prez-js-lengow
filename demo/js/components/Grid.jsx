@@ -10,6 +10,9 @@ import Loader from './Loader.jsx';
 
 import filter from '../utils/filter';
 
+/**
+ * On utilise ici le state pour stocker le filtre courant
+ */
 class Grid extends React.Component {
     constructor() {
         super();
@@ -23,6 +26,8 @@ class Grid extends React.Component {
     }
     render() {
         const { fetching, products, fetchProducts } = this.props;
+
+        // on construit les produits
         const items = products
             .filter(filter(this.state.filter))
             .map((c) => (
@@ -34,6 +39,7 @@ class Grid extends React.Component {
                 />
             ));
 
+        // si pas d'items, on affiche un petit message
         const noItems = products.size === 0 ? (
             <div className="col-xs-12">
                 <div className="no-content">
@@ -48,6 +54,7 @@ class Grid extends React.Component {
             </div>
         ) : '';
 
+        // on construit le bouton More si nécessaire
         const more = products.size > 0 ? (
             <div className="col-xs-12 text-center">
                 <Button
@@ -56,6 +63,7 @@ class Grid extends React.Component {
             </div>
         ) : '';
 
+        // on construit le loader si nécessaire
         const loader = fetching ? (
             <div className="col-xs-12">
                 <Loader text="Loading products..." />
@@ -64,7 +72,6 @@ class Grid extends React.Component {
 
         return (
             <div className="container">
-
                 <div
                     className="filters-box margin-standard margin-top-standard"
                 >
