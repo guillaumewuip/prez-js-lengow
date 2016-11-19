@@ -7,7 +7,7 @@ Présentation faite à [Lengow](http://www.lengow.com) le 19 août 2016 à l'iss
 de 3 mois de stage lors de ma 3ème année à
 [Polytech Nantes](http://web.polytech.univ-nantes.fr/).
 
-➡ Ici : [guillaume.wuips.com/prez-js-lengow](http://guillaume.wuips.com/prez-js-lengow/)
+➡ [guillaume.wuips.com/prez-js-lengow](http://guillaume.wuips.com/prez-js-lengow/) (Google Chrome only)
 
 
 This is built with both Reveal.js and Jekyll.
