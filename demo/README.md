@@ -1,6 +1,8 @@
 
 # Demo
 
+➡️ http://hello-shopify.cleverapps.io/
+
 Demo of a React & Redux stack with ES6. Let's build a list of products.
 
 Tested for node 6.4.0.
