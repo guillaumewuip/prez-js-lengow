@@ -1,9 +1,10 @@
 
 const
-    fs   = require('fs'),
-    path = require('path'),
-    uuid = require('uuid'),
-    app  = require('express')();
+    fs      = require('fs'),
+    path    = require('path'),
+    uuid    = require('uuid'),
+    express = require('express'),
+    app     = express();
 
 const
     PORT        = process.env.PORT || 8080,
@@ -77,6 +78,12 @@ const start = (images) => {
         setTimeout(() => res.json(
             buildProducts(NB_PRODUCTS, images, NAMES_PARTS, MAX_PRICE)
         ), TIMEOUT);
+    });
+
+    app.use(express.static(path.join(__dirname, './')));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, './index.html'));
     });
 
     app.listen(PORT, () => {

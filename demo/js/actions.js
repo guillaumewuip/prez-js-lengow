@@ -1,6 +1,5 @@
 
 import Catalog from './services/Catalog';
-import { SERVER_ROOT } from './constants.json';
 
 /**
  * On expose le nom des actions pour les utiliser facilement dans d'autres
@@ -46,7 +45,8 @@ const loading = () => ({
 export const fetchProducts = (catalog) => (dispatch) => {
     dispatch(loading()); // dispatch the loading state
 
-    return Catalog(SERVER_ROOT) // on utilise notre service
+    // on utilise notre service
+    return Catalog(SERVER_ROOT) // eslint-disable-line no-undef
         .getProducts(catalog)
         // on dispatch le résultat
         .then((res) => dispatch(newProductsSuccess(res.products)))

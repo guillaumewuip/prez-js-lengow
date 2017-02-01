@@ -1,7 +1,6 @@
 
 import React from 'react';
 
-import { CATALOG } from '../constants.json';
 
 import Button from './Button.jsx';
 import Product from './Product.jsx';
@@ -9,6 +8,8 @@ import Search from './Search.jsx';
 import Loader from './Loader.jsx';
 
 import filter from '../utils/filter';
+
+const CATALOG = 1;
 
 /**
  * On utilise ici le state pour stocker le filtre courant

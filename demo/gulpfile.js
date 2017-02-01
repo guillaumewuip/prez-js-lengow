@@ -5,7 +5,6 @@ const
     path        = require('path'),
     webpack     = require('webpack'),
     exec        = require('child_process').exec,
-    bs          = require('browser-sync').create(),
     eslint      = require('gulp-eslint');
 
 const webpackConfig = {
@@ -26,6 +25,11 @@ const webpackConfig = {
         path:     path.join(__dirname, 'build'),
         filename: 'bundle.js',
     },
+    plugins: [
+        new webpack.DefinePlugin({
+            SERVER_ROOT: process.env.SERVER_ROOT,
+        }),
+    ],
 };
 
 const inputPaths = {
@@ -39,13 +43,6 @@ const inputPaths = {
         'test/**/*.jsx',
     ],
 };
-
-bs.init({
-    server: {
-        baseDir: './',
-    },
-    open: false,
-});
 
 /**
  * JS
@@ -85,7 +82,6 @@ gulp.task('js:build', (done) => {
                 colors: true,
             }));
 
-            bs.reload();
             done();
         });
 });

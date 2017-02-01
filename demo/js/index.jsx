@@ -9,9 +9,9 @@ import thunkMiddleware from 'redux-thunk';
 import * as actions from './actions';
 import reducer from './reducer';
 
-import { CATALOG } from './constants.json';
-
 import Grid from './components/Grid.jsx';
+
+const CATALOG = 1; // first catalog
 
 /*
  * Création du Store
