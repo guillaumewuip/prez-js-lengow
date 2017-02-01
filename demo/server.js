@@ -11,7 +11,7 @@ const
     IMAGE_DIR   = process.env.IMAGE_DIR || 'img/products',
     NB_PRODUCTS = 200,
     MAX_PRICE   = 300,
-    TIMEOUT     = 1000;
+    TIMEOUT     = 1000; // fake response timeout
 
 const NAMES_PARTS = [
     'JARDIN',
@@ -43,10 +43,10 @@ const readImages = (dir) => new Promise((resolve, reject) => {
 });
 
 const buildProductName = (names) => {
-    const nbWords = random(1, 4);
+    const nbWords = random(1, 4); // random number of words
 
     const words = Array.from(Array(nbWords)).map(() => {
-        const index = random(0, names.length);
+        const index = random(0, names.length); // random word
 
         return names[index];
     });
@@ -59,8 +59,8 @@ const buildProduct = (images, names, maxPrice) => {
     return {
         id:    uuid.v4(),
         title: buildProductName(names),
-        img:   images[index],
-        price: `${random(0, maxPrice)} €`,
+        img:   images[index], // random image
+        price: `${random(0, maxPrice)} €`, // random price
     };
 };
 

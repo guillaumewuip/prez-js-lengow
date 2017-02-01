@@ -1,63 +1,55 @@
 
-# Petite Démo
+# Demo
 
-Mise en place de la stack ES6, React, Redux & Cie pour afficher par exemple
-la liste des produits d'un catalogue.
+Demo of a React & Redux stack with ES6. Let's build a list of products.
 
-Testé uniquement avec node 6.4.0.
+Tested for node 6.4.0.
 
-# Lancer la démo
-
-- Installer les dépendences `npm install`
-- Lancer le mini serveur `node server.js`
-- Lancer gulp `gulp`
-- Aller sur [localhost:3000](http://localhost:3000)
-
-# Ce qu'il faut savoir
-
-## Archi
+# Start demo
 
 ```
-├── css                 # juste les styles qu'il faut
+npm install
+heroku local
+```
+
+# What you need to know
+
+## Files
+
+```
+├── css                 # styles copied from Lengow
 ├── img
-│   └── products        # quelques images random
+│   └── products        # random images
 ├── js
-│   ├── components/     # les vues React
+│   ├── components/     # React views
 │   ├── services/
-│   │   └── Catalog.js  # le service
+│   │   └── Catalog.js  # services
 │   ├── utils
-│   │   └── filter.js   # un helper pour filter les produits
-│   ├── actions.js      # les actions Redux
-│   ├── constants.json  # quelques constantes (pas forcément idéalement placées)
-│   ├── reducer.js      # le reducer
-│   └── index.js        # entrypoint, création du store et attachement du
-│                       # composant au DOM
-├── test                # les tests de tout
+│   │   └── filter.js   # products filter helper
+│   ├── actions.js      # Redux actions
+│   ├── reducer.js      # reducer
+│   └── index.js        # entrypoint, create store et add component to DOM
+├── test                # test everything !
 │   ├── components
 │   ├── services
 │   └── utils
-├── .eslintrc.json      # la config ESLint (basé sur les règles Airbnb)
+├── .eslintrc.json      # ESLint config (from Airbnb)
 ├── package.json
-├── gulpfile.js         # la config de gulp
-├── server.js           # le mini server pour retourner les produits
+├── gulpfile.js         # gulp config
+├── server.js           # fake API server that returns fake products
 └── index.html
 ```
 
 ## Gulp
 
-Ce bon vieux `gulp` fait pas mal de choses :
+On dev environnement, use `gulp` to build and test the code :
 
-- lint à chaque changement d'un fichier `.js`  ou `.jsx`
-- lancement des tests à chaque changement d'un fichier `.js`  ou `.jsx`
-- build du JS via webpack à chaque changement d'un fichier `.js`  ou `.jsx`
-- live reload de la page à chaque changement d'un fichier `.js`  ou `.jsx`
-
-Dans un environnement de prod, bien sûr, on laisserai gulp de côté pour servir
-directement le résultat de webpack.
+- lint for each `.js` or `.jsx` change
+- tests for each `.js`  or `.jsx` change
+- webpack build for each `.js`  or `.jsx` change
 
 ## Tests & Coverage
 
-Pour lancer les tests à la main et/ou le coverage :
 - `npm run test`
 - `npm run coverage`
 
@@ -69,9 +61,8 @@ Functions    : 89.47% ( 34/38 ), 1 ignored
 Lines        : 92.31% ( 60/65 )
 ================================================================================
 ```
-(sans se forcer, pas mal non ?)
 
-## Commentaires
+## Comments
 
-Les éléments clés de la démo sont commentés 💪
+Key elements are commented 💪
 

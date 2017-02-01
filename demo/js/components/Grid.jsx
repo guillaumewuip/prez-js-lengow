@@ -12,7 +12,7 @@ import filter from '../utils/filter';
 const CATALOG = 1;
 
 /**
- * On utilise ici le state pour stocker le filtre courant
+ * We can use the state to store the current filter
  */
 class Grid extends React.Component {
     constructor() {
@@ -28,7 +28,7 @@ class Grid extends React.Component {
     render() {
         const { fetching, products, fetchProducts } = this.props;
 
-        // on construit les produits
+        // let's build the products
         const items = products
             .filter(filter(this.state.filter))
             .map((c) => (
@@ -40,7 +40,7 @@ class Grid extends React.Component {
                 />
             ));
 
-        // si pas d'items, on affiche un petit message
+        // if no items, show a empty message
         const noItems = products.size === 0 ? (
             <div className="col-xs-12">
                 <div className="no-content">
@@ -55,7 +55,7 @@ class Grid extends React.Component {
             </div>
         ) : '';
 
-        // on construit le bouton More si nécessaire
+        // build more button if needed
         const more = products.size > 0 ? (
             <div className="col-xs-12 text-center">
                 <Button
@@ -64,7 +64,6 @@ class Grid extends React.Component {
             </div>
         ) : '';
 
-        // on construit le loader si nécessaire
         const loader = fetching ? (
             <div className="col-xs-12">
                 <Loader text="Loading products..." />

@@ -1,8 +1,8 @@
 
 /**
- * Filtre des produits sur le tire, le prix et l'image
+ * Filter products on title, price and image
  *
- * Si pas de search query, on accèpte tout
+ * If no seach query, return everything
  */
 const filter = (search) => (product) => (
     search === ''

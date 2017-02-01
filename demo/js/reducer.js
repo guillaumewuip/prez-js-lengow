@@ -8,27 +8,25 @@ const init = () => fromJS({
 });
 
 /**
- * Le reducer
+ * Teducer
  *
- * Si le reducer devient trop gros, on peut le découper et utiliser
- * `combineReducer`
+ * If the reducer is too big, just split it and use `combineReducer`
  *
- * Dès que la gestion d'une action devient trop grande, on crée une fonction
- * comme init()
+ * As soon as an action handler is to big, we create a function like init()
  *
  * @param  {Immutable}  state
  * @param  {Object}     action
  * @param  {Object}     action.type
  *
- * @return {Immutable}                  Un nouveau state
+ * @return {Immutable}                  A new state
  */
 const reducer = (state = Map(), action) => {
     switch (action.type) {
     case INIT:
         return init();
-    case PRODUCTS_LOADING: // On charge des produits
+    case PRODUCTS_LOADING: // We just start loading new products
         return state.set('loading', true);
-    case NEW_PRODUCTS: // On a récupéré de nouveaux produits
+    case NEW_PRODUCTS: // We just loaded new products
         return state
             .set('loading', false)
             .update(

@@ -14,25 +14,25 @@ import Grid from './components/Grid.jsx';
 const CATALOG = 1; // first catalog
 
 /*
- * Création du Store
+ * Create store
  */
 
-// On crée le store utilisant notre reducer
+// Create the store using our reducer
 const store = createStore(reducer, compose(
-    // on peut ajouter autant de middleware que l'on veut
-    // ici thunk pour faire des actions asynchrones
+    // we can use as must reducer as we want
+    // here thunk is used for async actions
     applyMiddleware(thunkMiddleware),
-    // Pour Chrome React Developer Tools
+    // Chrome React Developer Tools
     window.devToolsExtension ? window.devToolsExtension() : f => f
 ));
 
-// On dispatche une première action d'init au store
+// Let's start by dispatching an init action to build the store
 store.dispatch({
     type: actions.INIT,
 });
 
 /*
- * On attache nos composants au DOM
+ * Attach our components to DOM
  */
 
 const mapStateToProps = (state) => ({
@@ -40,10 +40,10 @@ const mapStateToProps = (state) => ({
     fetching: state.get('loading'),
 });
 
-// on crée un composant React "container"
+// Container React component
 const AppContainer = connect(
-    mapStateToProps,    // on déclare les props du composants
-    actions             // on peut passer directement les actions
+    mapStateToProps,    // props
+    actions             // actions to pass
 )(Grid);
 
 ReactDOM.render(
@@ -54,8 +54,9 @@ ReactDOM.render(
 );
 
 /*
- * C'est partiiii ! 🚀
+ * Let's goooo ! 🚀
  */
 
-// On va chercher les premiers produits
+// Start by fetching first products
 store.dispatch(actions.fetchProducts(CATALOG));
+

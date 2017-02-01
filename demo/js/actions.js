@@ -2,8 +2,7 @@
 import Catalog from './services/Catalog';
 
 /**
- * On expose le nom des actions pour les utiliser facilement dans d'autres
- * fichiers
+ * Let's expose the actions names to use them in other files
  */
 
 export const INIT              = 'INIT';
@@ -13,13 +12,13 @@ export const NEW_PRODUCTS      = 'NEW_PRODUCTS';
 export const PRODUCTS_ERROR    = 'PRODUCTS_ERROR';
 
 /**
- * Nos actions
+ * Actions
  */
 
 /**
- * On vient de récupérer de nouveaux produits
+ * We just loaded new products
  *
- * N'est pas exposé car appelée uniquement ici
+ * Don't need to be exposed because used here only
  */
 const newProductsSuccess = (newProducts) => ({
     newProducts,
@@ -28,27 +27,26 @@ const newProductsSuccess = (newProducts) => ({
 });
 
 /**
- * On vient de lancer un fetch de produits
+ * When we just started to fetch products
  *
- * N'est pas exposé car appelée uniquement ici
+ * Don't need to be exposed because used here only
  */
 const loading = () => ({
     type: PRODUCTS_LOADING,
 });
 
 /**
- * On veut charge de nouveaux produits
+ * We want to load new products
  *
- * C'est une action asynchone qui retourne donc une fonction recevant le
- * `dispatch` nécessaire pour appeler d'autres actions
+ * This is an async action that return a function using `dispatch`.
+ * `dispatch` is used to call other actions.
  */
 export const fetchProducts = (catalog) => (dispatch) => {
     dispatch(loading()); // dispatch the loading state
 
-    // on utilise notre service
     return Catalog(SERVER_ROOT) // eslint-disable-line no-undef
         .getProducts(catalog)
-        // on dispatch le résultat
+        // dispatch the résultat
         .then((res) => dispatch(newProductsSuccess(res.products)))
         .catch((err) => {
             throw new Error(err); // TODO dispatch error here
