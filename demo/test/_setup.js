@@ -15,3 +15,6 @@ Object.keys(window).forEach((key) => {
 });
 
 chai.use(chaiImmutable);
+
+// prevent error in actions.js
+global.SERVER_ROOT = 'http://hello-world';
